@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "quote": "Get a Quote",
+    "blog": "Blog",
+    "contact": "Contact",
+    "who": "Who are we?",
+    "team": "Team",
+    "faq": "FAQ",
+    "opportunities": "Opportunities",
+    "training": "Training",
+    "wash": "Basic & Full Wash",
+    "paint": "Paint Correction",
+    "ceramic": "Ceramic Protection",
+    "headlights": "Headlight Restoration",
+    "engine": "Engine Cleaning",
+    "mobile": "Total Klean Mobile"
+  },
+  "hero": {
+    "eyebrow": "Total Klean, for a unique service...",
+    "headline": "Vehicles more than clean, more than brilliant",
+    "cta": "Request a quote",
+    "ctaSecondary": "Our services"
+  },
+  "stats": {
+    "years": "Years of experience",
+    "vehicles": "Vehicles detailed",
+    "services": "Services offered",
+    "satisfaction": "Satisfaction rate"
+  },
+  "services": {
+    "heading": "Our services",
+    "intro": "At Total Klean, we offer a comprehensive range of services to restore, protect and maintain your vehicle.",
+    "cta": "See more",
+    "tagline": "With us, your vehicle regains all its beauty.",
+    "subtagline": "Give your car the best with our mobile cleaning and maintenance services, tailored to your needs."
+  },
+  "mobile": {
+    "headline": "Professional car care, wherever you are.",
+    "subtext": "Impeccable service delivered directly to your location.",
+    "cta": "Total Klean Mobile"
+  },
+  "realizations": {
+    "heading": "Our Work",
+    "subtext": "Brilliance from inside out",
+    "step1": "Your vehicle like new",
+    "step2": "Your vehicle's exterior protected",
+    "step3": "Brilliant, beautiful headlights",
+    "step4": "A functional engine depends on it",
+    "step5": "The car wash that comes to you.",
+    "step5sub": "Premium equipment for a perfect clean, delivered wherever you are, at any time.",
+    "badge": "Free estimate"
+  },
+  "testimonials": {
+    "heading": "What our clients say",
+    "subtext": "Our clients' satisfaction is our greatest pride."
+  },
+  "savoirfaire": {
+    "heading": "Our expertise restores brilliance to your vehicle",
+    "service": "Polishing"
+  },
+  "blog": {
+    "heading": "Recent news",
+    "subtext": "We share our news, tips and strategies from our blog",
+    "cta": "Read article"
+  },
+  "contact": {
+    "heading": "Write to us!",
+    "name": "Full name",
+    "email": "Email address",
+    "phone": "Phone number",
+    "service": "Desired service",
+    "message": "Your message",
+    "submit": "Send message",
+    "whatsapp": "WhatsApp",
+    "consent": "I agree that the data I have provided will be collected and stored in accordance with Total Klean's privacy policy.",
+    "address": "N°16, Rue Rachidi Tumbula, Goma, DRC",
+    "phone_num": "+243 997 806 193",
+    "email_addr": "contact@totalklean.com"
+  },
+  "footer": {
+    "mission": "To provide high-quality washing and aesthetic preparation for customers' vehicles while respecting company standards and procedures.",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy"
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "getQuote": "Request a quote",
+    "viewAll": "View all"
+  }
+}

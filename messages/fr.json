@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "quote": "Cotation",
+    "blog": "Blog",
+    "contact": "Contact",
+    "who": "Qui sommes-nous ?",
+    "team": "Équipe",
+    "faq": "FAQ",
+    "opportunities": "Opportunités",
+    "training": "Formation",
+    "wash": "Lavage basique et complet",
+    "paint": "Correction de la peinture",
+    "ceramic": "Protection céramique",
+    "headlights": "Rénovation des phares",
+    "engine": "Nettoyage moteur",
+    "mobile": "Total Klean Mobile"
+  },
+  "hero": {
+    "eyebrow": "Total Klean, pour un service unique...",
+    "headline": "Pour des véhicules plus que propres, plus que brillant",
+    "cta": "Demander une cotation",
+    "ctaSecondary": "Nos services"
+  },
+  "stats": {
+    "years": "Années d'expérience",
+    "vehicles": "Véhicules traités",
+    "services": "Services offerts",
+    "satisfaction": "Taux de satisfaction"
+  },
+  "services": {
+    "heading": "Nos services",
+    "intro": "Chez Total Klean, nous offrons une gamme complète de services pour restaurer, protéger et entretenir votre véhicule.",
+    "cta": "Voir plus",
+    "tagline": "Avec nous, votre véhicule recouvre toute sa beauté.",
+    "subtagline": "Offrez à votre voiture le meilleur avec nos services de nettoyage et d'entretien mobile, adaptés à vos besoins."
+  },
+  "mobile": {
+    "headline": "Un lavage professionnel, là où vous êtes.",
+    "subtext": "Lavage irréprochable, directement chez vous.",
+    "cta": "Total Klean Mobile"
+  },
+  "realizations": {
+    "heading": "Nos Réalisations",
+    "subtext": "De l'éclat de l'intérieur à l'extérieur",
+    "step1": "Votre véhicule comme neuf",
+    "step2": "L'extérieur de votre véhicule protégé",
+    "step3": "De l'éclat, de la beauté des phares",
+    "step4": "Un moteur fonctionnel en dépend",
+    "step5": "Le lavage qui vient à vous.",
+    "step5sub": "Des équipements haut de gamme pour une propreté parfaite, livrés où que vous soyez, en tout temps.",
+    "badge": "Devis gratuit"
+  },
+  "testimonials": {
+    "heading": "Ce que disent nos clients",
+    "subtext": "La satisfaction de nos clients est notre plus grande fierté."
+  },
+  "savoirfaire": {
+    "heading": "Notre savoir-faire redonne de l'éclat à votre véhicule",
+    "service": "Polissage"
+  },
+  "blog": {
+    "heading": "Actualités récentes",
+    "subtext": "Nous partageons avec vous nos nouvelles, pratiques et stratégies à partir de notre blog",
+    "cta": "Lire l'article"
+  },
+  "contact": {
+    "heading": "Écrivez-nous !",
+    "name": "Nom complet",
+    "email": "Adresse e-mail",
+    "phone": "Téléphone",
+    "service": "Service souhaité",
+    "message": "Votre message",
+    "submit": "Envoyer le message",
+    "whatsapp": "WhatsApp",
+    "consent": "J'accepte que les données que j'ai fournies soient collectées et stockées conformément à la politique de confidentialité de Total Klean.",
+    "address": "N°16, Rue Rachidi Tumbula, Goma, RDC",
+    "phone_num": "+243 997 806 193",
+    "email_addr": "contact@totalklean.com"
+  },
+  "footer": {
+    "mission": "Assurer un lavage et une préparation esthétique de haute qualité pour les véhicules des clients tout en respectant les normes et les procédures de l'entreprise.",
+    "rights": "Tous droits réservés.",
+    "privacy": "Politique de confidentialité"
+  },
+  "common": {
+    "learnMore": "En savoir plus",
+    "getQuote": "Demander une cotation",
+    "viewAll": "Voir tout"
+  }
+}
