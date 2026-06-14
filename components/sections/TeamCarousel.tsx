@@ -127,11 +127,11 @@ export function TeamCarousel({ members, lang, bg = "white" }: Props) {
   return (
     <div className="relative">
       <div
-        className={`pointer-events-none absolute left-0 inset-y-0 w-20 z-10 bg-gradient-to-r to-transparent`}
+        className="pointer-events-none absolute left-0 inset-y-0 w-6 sm:w-16 z-10"
         style={{ backgroundImage: `linear-gradient(to right, ${bg}, transparent)` }}
       />
       <div
-        className="pointer-events-none absolute right-0 inset-y-0 w-20 z-10"
+        className="pointer-events-none absolute right-0 inset-y-0 w-6 sm:w-16 z-10"
         style={{ backgroundImage: `linear-gradient(to left, ${bg}, transparent)` }}
       />
 

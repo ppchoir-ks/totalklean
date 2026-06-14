@@ -5,7 +5,8 @@
       "Bash(Select-Object -First 80)",
       "PowerShell(Head 60)",
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\ngufu\\\\websites\\\\totalklean\" -Recurse | Select-Object -First 60 | ForEach-Object { $_.FullName })",
-      "PowerShell($content = Get-Content \"C:\\\\Users\\\\ngufu\\\\Downloads\\\\Total Klean – Votre véhicule autrement.html\" -Raw; $content.Length; $content.Substring\\(0, 500\\))"
+      "PowerShell($content = Get-Content \"C:\\\\Users\\\\ngufu\\\\Downloads\\\\Total Klean – Votre véhicule autrement.html\" -Raw; $content.Length; $content.Substring\\(0, 500\\))",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\ngufu\\\\websites\\\\totalklean\"; $job = Start-Job { Set-Location \"C:\\\\Users\\\\ngufu\\\\websites\\\\totalklean\"; npm run dev 2>&1 }; Start-Sleep 15; Receive-Job $job; Stop-Job $job; Remove-Job $job)"
     ]
   }
 }

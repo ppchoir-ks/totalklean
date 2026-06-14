@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const lang = locale as "fr" | "en";
   return {
-    title: lang === "fr" ? "Opportunités & Formation — Total Klean" : "Opportunities & Training — Total Klean",
+    title: lang === "fr" ? "Opportunités & Formation | Total Klean" : "Opportunities & Training | Total Klean",
     description: lang === "fr"
       ? "Rejoignez une équipe passionnée par l'excellence automobile à Goma."
       : "Join a team passionate about automotive excellence in Goma.",
@@ -87,11 +87,11 @@ export default async function OpportunitesPage({ params }: { params: Promise<{ l
                 </h3>
                 <p className="font-body text-white/60 text-sm leading-relaxed mb-7 max-w-lg mx-auto">
                   {lang === "fr"
-                    ? "Vous ne trouvez pas le poste qui vous correspond ? Envoyez-nous votre candidature spontanée — nous gardons tous les profils intéressants en mémoire."
-                    : "Can't find a matching position? Send us an open application — we keep all interesting profiles on file."}
+                    ? "Vous ne trouvez pas le poste qui vous correspond ? Envoyez-nous votre candidature spontanée, nous gardons tous les profils intéressants en mémoire."
+                    : "Can't find a matching position? Send us an open application, we keep all interesting profiles on file."}
                 </p>
                 <a
-                  href="mailto:contact@totalklean.com?subject=Candidature spontanée — Total Klean"
+                  href="mailto:contact@totalklean.com?subject=Candidature spontanée | Total Klean"
                   className="inline-flex items-center gap-2 px-6 py-3.5 bg-amber text-white font-body font-semibold rounded-btn hover:bg-white hover:text-obsidian transition-colors shadow-lg"
                 >
                   <Mail size={15} />

@@ -62,8 +62,8 @@ const services = [
     image: "/assets/services/mobile.jpg",
     frLabel: "Total Klean Mobile",
     enLabel: "Total Klean Mobile",
-    frDesc: "Tous nos services livrés directement à votre porte — chez vous, au bureau.",
-    enDesc: "All our services delivered directly to your door — home or office.",
+    frDesc: "Tous nos services livrés directement à votre porte, chez vous ou au bureau.",
+    enDesc: "All our services delivered directly to your door, at home or at the office.",
     featured: true,
   },
 ];
@@ -153,7 +153,7 @@ export function ServicesGrid() {
         </div>
       </Container>
 
-      {/* Carousel — no CSS gap; margins are managed per-card so collapsed cards leave no dead space */}
+      {/* Carousel - no CSS gap; margins are managed per-card so collapsed cards leave no dead space */}
       <div className="overflow-hidden px-4 sm:px-8 lg:px-16">
         <div className="flex" style={{ height: "420px" }}>
           {services.map((svc, i) => {

@@ -20,11 +20,11 @@ export const posts: BlogPost[] = [
 
 **La saleté : un ennemi silencieux**
 
-La boue, le sel de route, les polluants et les fientes d'oiseaux sont acides et attaquent progressivement la peinture si on les laisse s'incruster. Un nettoyage régulier — au minimum toutes les deux semaines — empêche ces dépôts de s'accumuler et d'entamer le vernis.
+La boue, le sel de route, les polluants et les fientes d'oiseaux sont acides et attaquent progressivement la peinture si on les laisse s'incruster. Un nettoyage régulier, au minimum toutes les deux semaines, empêche ces dépôts de s'accumuler et d'entamer le vernis.
 
 **Préserver la valeur de revente**
 
-Un véhicule bien entretenu visuellement se vend plus rapidement et à un meilleur prix. Les acheteurs potentiels associent la propreté à un entretien mécanique soigné — et ils ont souvent raison.
+Un véhicule bien entretenu visuellement se vend plus rapidement et à un meilleur prix. Les acheteurs potentiels associent la propreté à un entretien mécanique soigné, et ils ont souvent raison.
 
 **L'intérieur compte autant**
 
@@ -32,7 +32,7 @@ Poussière, miettes, odeurs et taches sur les sièges dégradent le confort et p
 
 **Total Klean à votre service**
 
-Chez Total Klean, nous proposons des formules de lavage adaptées à vos besoins et à votre budget — y compris notre service mobile qui se déplace directement chez vous à Goma et ses environs.`,
+Chez Total Klean, nous proposons des formules de lavage adaptées à vos besoins et à votre budget, y compris notre service mobile qui se déplace directement chez vous à Goma et ses environs.`,
     },
     en: {
       title: "Vehicle Maintenance: Why Regular Cleaning Is Essential",
@@ -41,11 +41,11 @@ Chez Total Klean, nous proposons des formules de lavage adaptées à vos besoins
 
 **Dirt: a silent enemy**
 
-Mud, road salt, pollutants and bird droppings are acidic and progressively attack the paintwork if left to set. Regular cleaning — at least every two weeks — prevents these deposits from building up and eating into the lacquer.
+Mud, road salt, pollutants and bird droppings are acidic and progressively attack the paintwork if left to set. Regular cleaning, at least every two weeks, prevents these deposits from building up and eating into the lacquer.
 
 **Preserving resale value**
 
-A visually well-maintained vehicle sells faster and at a better price. Potential buyers associate cleanliness with careful mechanical maintenance — and they're often right.
+A visually well-maintained vehicle sells faster and at a better price. Potential buyers associate cleanliness with careful mechanical maintenance, and they're often right.
 
 **The interior matters just as much**
 
@@ -53,7 +53,7 @@ Dust, crumbs, odours and stains on the seats degrade comfort and can permanently
 
 **Total Klean at your service**
 
-At Total Klean, we offer washing packages tailored to your needs and budget — including our mobile service that comes directly to you in Goma and the surrounding area.`,
+At Total Klean, we offer washing packages tailored to your needs and budget, including our mobile service that comes directly to you in Goma and the surrounding area.`,
     },
   },
   {
@@ -68,7 +68,7 @@ At Total Klean, we offer washing packages tailored to your needs and budget — 
 
 **Qu'est-ce que le polissage ?**
 
-Le polissage consiste à abraser microscopiquement la couche de vernis pour éliminer les imperfections : rayures légères, marques de tourbillon (swirl marks), oxydation et dépôts tenaces. Contrairement à ce que beaucoup pensent, on n'enlève pas la peinture — on corrige le vernis de protection.
+Le polissage consiste à abraser microscopiquement la couche de vernis pour éliminer les imperfections : rayures légères, marques de tourbillon (swirl marks), oxydation et dépôts tenaces. Contrairement à ce que beaucoup pensent, on n'enlève pas la peinture : on corrige le vernis de protection.
 
 **Notre processus en trois étapes**
 
@@ -89,7 +89,7 @@ Contactez Total Klean pour une évaluation gratuite de votre peinture.`,
 
 **What is polishing?**
 
-Polishing involves microscopically abrading the lacquer layer to remove imperfections: light scratches, swirl marks, oxidation and stubborn deposits. Contrary to what many think, we're not removing paint — we're correcting the protective clear coat.
+Polishing involves microscopically abrading the lacquer layer to remove imperfections: light scratches, swirl marks, oxidation and stubborn deposits. Contrary to what many think, we're not removing paint: we're correcting the protective clear coat.
 
 **Our three-step process**
 
@@ -111,45 +111,45 @@ Contact Total Klean for a free paint assessment.`,
     date: "2025-03-20",
     fr: {
       title: "Total Klean Mobile : L'innovation au service du nettoyage automobile à Goma",
-      excerpt: "Nous apportons nos services directement à vous — à domicile ou au bureau, partout dans Goma.",
+      excerpt: "Nous apportons nos services directement à vous, à domicile ou au bureau, partout dans Goma.",
       content: `Dans une ville dynamique comme Goma, le temps est précieux. C'est de ce constat qu'est né Total Klean Mobile : un service de préparation esthétique automobile qui vient directement à vous.
 
 **Comment ça fonctionne ?**
 
-C'est simple : vous nous contactez pour fixer un rendez-vous, et notre équipe se déplace avec tout l'équipement nécessaire — eau, aspirateurs professionnels, produits de traitement — directement à votre adresse.
+C'est simple : vous nous contactez pour fixer un rendez-vous, et notre équipe se déplace avec tout l'équipement nécessaire (eau, aspirateurs professionnels, produits de traitement) directement à votre adresse.
 
 **Les avantages du service mobile**
 
 - **Gain de temps** : Pas besoin de se déplacer. Votre véhicule est traité pendant que vous vaquiez à vos occupations.
-- **Flexibilité** : Nous intervenons le matin, l'après-midi ou selon vos contraintes — même au bureau.
+- **Flexibilité** : Nous intervenons le matin, l'après-midi ou selon vos contraintes, même au bureau.
 - **Même qualité** : Nos techniciens disposent du même matériel qu'à l'atelier. La qualité ne souffre d'aucun compromis.
 - **Zone de couverture** : Nous intervenons dans toute la ville de Goma et ses environs immédiats.
 
 **Quels services en mobile ?**
 
-La totalité de nos services sont disponibles en version mobile : lavage basique et complet, correction de peinture légère, rénovation des phares et nettoyage moteur. Seule la protection céramique complète nécessite parfois un environnement contrôlé — nous vous le précisons lors de la cotation.
+La totalité de nos services sont disponibles en version mobile : lavage basique et complet, correction de peinture légère, rénovation des phares et nettoyage moteur. Seule la protection céramique complète nécessite parfois un environnement contrôlé : nous vous le précisons lors de la cotation.
 
 Réservez dès maintenant via WhatsApp ou notre formulaire en ligne.`,
     },
     en: {
       title: "Total Klean Mobile: Innovation in Car Cleaning in Goma",
-      excerpt: "We bring our services directly to you — at home or at the office, anywhere in Goma.",
+      excerpt: "We bring our services directly to you, at home or at the office, anywhere in Goma.",
       content: `In a dynamic city like Goma, time is precious. This is the insight behind Total Klean Mobile: an automotive detailing service that comes directly to you.
 
 **How does it work?**
 
-It's simple: you contact us to set an appointment, and our team comes with all the necessary equipment — water, professional vacuums, treatment products — directly to your address.
+It's simple: you contact us to set an appointment, and our team comes with all the necessary equipment (water, professional vacuums, treatment products) directly to your address.
 
 **The advantages of the mobile service**
 
 - **Time saving**: No need to travel. Your vehicle is treated while you go about your business.
-- **Flexibility**: We work in the morning, afternoon or according to your constraints — even at the office.
+- **Flexibility**: We work in the morning, afternoon or according to your constraints, even at the office.
 - **Same quality**: Our technicians have the same equipment as at the workshop. Quality is never compromised.
 - **Coverage area**: We operate throughout the city of Goma and its immediate surroundings.
 
 **Which services are available mobile?**
 
-All of our services are available in mobile form: basic and full wash, light paint correction, headlight restoration and engine cleaning. Only a full ceramic protection sometimes requires a controlled environment — we'll specify this during the quote.
+All of our services are available in mobile form: basic and full wash, light paint correction, headlight restoration and engine cleaning. Only a full ceramic protection sometimes requires a controlled environment: we'll specify this during the quote.
 
 Book now via WhatsApp or our online form.`,
     },

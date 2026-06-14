@@ -30,19 +30,19 @@ export async function POST(req: NextRequest) {
         from: `"Total Klean Site" <${process.env.SMTP_USER}>`,
         to: process.env.CONTACT_EMAIL ?? "contact@totalklean.com",
         replyTo: email,
-        subject: `Nouvelle demande de cotation — ${service || "Non précisé"}`,
+        subject: `Nouvelle demande de cotation : ${service || "Non précisé"}`,
         html: `
           <div style="font-family:sans-serif;max-width:600px;margin:0 auto">
             <div style="background:#285889;padding:24px 32px;border-radius:12px 12px 0 0">
-              <h1 style="color:#fff;font-size:20px;margin:0">Nouvelle demande — Total Klean</h1>
+              <h1 style="color:#fff;font-size:20px;margin:0">Nouvelle demande | Total Klean</h1>
             </div>
             <div style="background:#f8f9fc;padding:24px 32px;border-radius:0 0 12px 12px;border:1px solid #e5e7eb">
               <table style="width:100%;border-collapse:collapse;font-size:14px">
                 <tr><td style="padding:8px 0;color:#888;width:140px">Nom</td><td style="padding:8px 0;color:#17181A;font-weight:600">${name}</td></tr>
                 <tr><td style="padding:8px 0;color:#888">Email</td><td style="padding:8px 0;color:#17181A">${email}</td></tr>
-                <tr><td style="padding:8px 0;color:#888">Téléphone</td><td style="padding:8px 0;color:#17181A">${phone || "—"}</td></tr>
-                <tr><td style="padding:8px 0;color:#888">Service</td><td style="padding:8px 0;color:#17181A">${service || "—"}</td></tr>
-                <tr><td style="padding:8px 0;color:#888">Véhicule</td><td style="padding:8px 0;color:#17181A">${vehicle || "—"}</td></tr>
+                <tr><td style="padding:8px 0;color:#888">Téléphone</td><td style="padding:8px 0;color:#17181A">${phone || "N/A"}</td></tr>
+                <tr><td style="padding:8px 0;color:#888">Service</td><td style="padding:8px 0;color:#17181A">${service || "N/A"}</td></tr>
+                <tr><td style="padding:8px 0;color:#888">Véhicule</td><td style="padding:8px 0;color:#17181A">${vehicle || "N/A"}</td></tr>
               </table>
               <hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0"/>
               <p style="font-size:14px;color:#555;white-space:pre-wrap;margin:0">${message}</p>
@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
         `,
       });
     } else {
-      // SMTP not configured — log to console for development
+      // SMTP not configured - log to console for development
       // To enable email: add SMTP_HOST, SMTP_USER, SMTP_PASS to your .env.local
       console.log("[Contact form] SMTP not configured. Submission:", {
         name, email, phone, service, vehicle, message,

@@ -42,8 +42,8 @@ const mainPlans: Plan[] = [
     label: { fr: "Total Klean Mobile", en: "Total Klean Mobile" },
     price: { fr: "Sur devis", en: "On request" },
     priceNote: {
-      fr: "Tous services — livrés chez vous",
-      en: "All services — delivered to you",
+      fr: "Tous services, livrés chez vous",
+      en: "All services, delivered to you",
     },
     points: [
       { fr: "Déplacement domicile ou bureau", en: "Home or office visit" },
@@ -233,12 +233,12 @@ function PlanCard({ plan, lang, compact = false }: { plan: Plan; lang: "fr" | "e
     <div className={cn(
       "group/card relative rounded-3xl border border-slate-100 flex flex-col h-full",
       "shadow-[0_4px_28px_rgba(40,88,137,0.07)]",
-      // hover effects only on real pointer devices (desktop) — prevents touch-trigger glitch on mobile
+      // hover effects only on real pointer devices (desktop) - prevents touch-trigger glitch on mobile
       "lg:hover:border-baltic lg:hover:shadow-[0_20px_60px_rgba(40,88,137,0.28)]",
       "transition-[box-shadow,border-color] duration-300 ease-out",
       p
     )}>
-      {/* Background overlay — opacity only, GPU-composited, desktop-only */}
+      {/* Background overlay - opacity only, GPU-composited, desktop-only */}
       <div className="pointer-events-none absolute inset-0 rounded-3xl bg-baltic opacity-0 lg:group-hover/card:opacity-100 transition-opacity duration-300 ease-out" />
 
       <div className="relative z-10 flex flex-col h-full">
@@ -340,7 +340,7 @@ export function PricingCards({ lang }: { lang: "fr" | "en" }) {
 
   return (
     <div>
-      {/* Mobile carousel (below lg) — horizontal snap scroll */}
+      {/* Mobile carousel (below lg) - horizontal snap scroll */}
       <div
         ref={carouselRef}
         className="lg:hidden -mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -352,7 +352,7 @@ export function PricingCards({ lang }: { lang: "fr" | "en" }) {
         ))}
       </div>
 
-      {/* Carousel indicators — swipe hint + tappable pill dots */}
+      {/* Carousel indicators - swipe hint + tappable pill dots */}
       <div className="lg:hidden flex flex-col items-center gap-3 mt-5">
         {/* Animated swipe hint fades out after first scroll */}
         <AnimatePresence>
@@ -375,7 +375,7 @@ export function PricingCards({ lang }: { lang: "fr" | "en" }) {
           )}
         </AnimatePresence>
 
-        {/* Pill dots — active dot stretches into a pill */}
+        {/* Pill dots - active dot stretches into a pill */}
         <div className="flex items-center gap-1.5">
           {mainPlans.map((_, i) => (
             <button

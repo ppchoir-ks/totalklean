@@ -24,9 +24,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Total Klean — Votre véhicule autrement",
+  title: "Total Klean | Votre véhicule autrement",
   description:
-    "Services premium de lavage et préparation esthétique automobile à Goma, RDC. Céramique, polissage, rénovation — livrés directement chez vous.",
+    "Services premium de lavage et préparation esthétique automobile à Goma, RDC. Céramique, polissage, rénovation, livrés directement chez vous.",
   openGraph: {
     siteName: "Total Klean",
     type: "website",

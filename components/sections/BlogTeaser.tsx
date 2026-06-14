@@ -41,11 +41,11 @@ const posts = [
     tag: "Mobile",
     fr: {
       title: "Total Klean Mobile : L'innovation au service du nettoyage automobile à Goma",
-      excerpt: "Nous apportons nos services directement à vous — à domicile ou au bureau, partout dans Goma.",
+      excerpt: "Nous apportons nos services directement à vous, à domicile ou au bureau, partout dans Goma.",
     },
     en: {
       title: "Total Klean Mobile: Innovation in Car Cleaning in Goma",
-      excerpt: "We bring our services directly to you — at home or at the office, anywhere in Goma.",
+      excerpt: "We bring our services directly to you, at home or at the office, anywhere in Goma.",
     },
   },
 ];

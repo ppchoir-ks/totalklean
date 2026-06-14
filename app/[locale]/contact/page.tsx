@@ -101,7 +101,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                 <div className="text-center">
                   <MapPin size={28} className="text-baltic/25 mx-auto mb-2" />
                   <p className="font-body text-xs text-obsidian/35">
-                    {lang === "fr" ? "Google Maps — à intégrer" : "Google Maps — to integrate"}
+                    {lang === "fr" ? "Google Maps (à intégrer)" : "Google Maps (to integrate)"}
                   </p>
                 </div>
               </GlassCard>

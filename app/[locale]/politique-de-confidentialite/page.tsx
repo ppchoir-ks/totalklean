@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const lang = locale as "fr" | "en";
   return {
-    title: lang === "fr" ? "Politique de confidentialité — Total Klean" : "Privacy Policy — Total Klean",
+    title: lang === "fr" ? "Politique de confidentialité | Total Klean" : "Privacy Policy | Total Klean",
     robots: "noindex",
   };
 }

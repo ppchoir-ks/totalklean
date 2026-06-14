@@ -18,7 +18,7 @@ const faqs = {
     },
     {
       q: "Dois-je apporter mon véhicule ou venez-vous chez moi ?",
-      a: "Les deux options sont disponibles ! Vous pouvez nous amener votre véhicule à notre atelier (N°16, Rue Rachidi Tumbula, Goma) ou bénéficier de notre service Total Klean Mobile — nous nous déplaçons directement chez vous.",
+      a: "Les deux options sont disponibles ! Vous pouvez nous amener votre véhicule à notre atelier (N°16, Rue Rachidi Tumbula, Goma) ou bénéficier de notre service Total Klean Mobile : nous nous déplaçons directement chez vous.",
     },
     {
       q: "Quels types de véhicules acceptez-vous ?",
@@ -44,7 +44,7 @@ const faqs = {
     },
     {
       q: "Do I bring my vehicle or do you come to me?",
-      a: "Both options are available! You can bring your vehicle to our workshop (N°16, Rue Rachidi Tumbula, Goma) or use our Total Klean Mobile service — we come directly to you.",
+      a: "Both options are available! You can bring your vehicle to our workshop (N°16, Rue Rachidi Tumbula, Goma) or use our Total Klean Mobile service: we come directly to you.",
     },
     {
       q: "What types of vehicles do you accept?",
@@ -144,8 +144,8 @@ export default function FAQPage() {
             </p>
             <p className="font-body text-sm text-obsidian/50 mb-6">
               {locale === "fr"
-                ? "Contactez-nous directement — nous serons ravis de vous aider."
-                : "Contact us directly — we'll be happy to help."}
+                ? "Contactez-nous directement, nous serons ravis de vous aider."
+                : "Contact us directly, we'll be happy to help."}
             </p>
             <Link
               href={`/${locale}/contact`}

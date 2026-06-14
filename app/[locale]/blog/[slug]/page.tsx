@@ -25,7 +25,7 @@ export async function generateMetadata({
   if (!post) return {};
   const lang = locale as "fr" | "en";
   return {
-    title: `${post[lang].title} — Total Klean`,
+    title: `${post[lang].title} | Total Klean`,
     description: post[lang].excerpt,
     openGraph: {
       title: post[lang].title,
@@ -140,8 +140,8 @@ export default async function BlogPostPage({
                 </h3>
                 <p className="font-body text-white/55 text-sm mb-6 max-w-sm leading-relaxed">
                   {lang === "fr"
-                    ? "Demandez une cotation gratuite — nous vous revenons sous 24h."
-                    : "Request a free quote — we'll get back to you within 24h."}
+                    ? "Demandez une cotation gratuite. Nous vous revenons sous 24h."
+                    : "Request a free quote. We'll get back to you within 24h."}
                 </p>
                 <Link
                   href={`/${locale}/cotation`}

@@ -33,41 +33,41 @@ const values = {
 const management: TeamMember[] = [
   {
     id: "dg",
-    name: "Prénom Nom",
+    name: "Samuel MUMBERE",
     role: { fr: "Manager", en: "Manager" },
     experience: { fr: "5 ans d'expérience", en: "5 years of experience" },
     image: "/assets/team/dg.jpg",
-    initials: "M",
+    initials: "SM",
     colorFrom: "#285889",
     colorTo: "#47A4C3",
   },
   {
     id: "dt",
-    name: "Prénom Nom",
-    role: { fr: "Comptable", en: "Accountant" },
+    name: "Chantal LUPANU",
+    role: { fr: "Caissière", en: "Cashier" },
     experience: { fr: "4 ans d'expérience", en: "4 years of experience" },
     image: "/assets/team/dt.jpg",
-    initials: "C",
+    initials: "CL",
     colorFrom: "#47A4C3",
     colorTo: "#1a4f7a",
   },
   {
     id: "rc",
-    name: "Prénom Nom",
+    name: "Espoir MUZIGIRWA",
     role: { fr: "Superviseur", en: "Supervisor" },
     experience: { fr: "3 ans d'expérience", en: "3 years of experience" },
     image: "/assets/team/rc.jpg",
-    initials: "S",
+    initials: "EM",
     colorFrom: "#EF762F",
     colorTo: "#c45a18",
   },
   {
     id: "ra",
-    name: "Prénom Nom",
+    name: "Emery MUMBERE",
     role: { fr: "Superviseur", en: "Supervisor" },
     experience: { fr: "3 ans d'expérience", en: "3 years of experience" },
     image: "/assets/team/ra.jpg",
-    initials: "S",
+    initials: "EM",
     colorFrom: "#1a4f7a",
     colorTo: "#285889",
   },
@@ -76,91 +76,91 @@ const management: TeamMember[] = [
 const cleaners: TeamMember[] = [
   {
     id: "c1",
-    name: "Prénom Nom",
-    role: { fr: "Technicien Polyvalent", en: "All-round Technician" },
+    name: "Ali BARAKA",
+    role: { fr: "Laveur", en: "Car Washer" },
     experience: { fr: "4 ans d'expérience", en: "4 years of experience" },
     image: "/assets/team/c1.jpg",
-    initials: "TP",
+    initials: "AB",
     colorFrom: "#285889",
     colorTo: "#47A4C3",
   },
   {
     id: "c2",
-    name: "Prénom Nom",
-    role: { fr: "Technicien Polyvalent", en: "All-round Technician" },
+    name: "Vincent KASIWA",
+    role: { fr: "Laveur", en: "Car Washer" },
     experience: { fr: "3 ans d'expérience", en: "3 years of experience" },
     image: "/assets/team/c2.jpg",
-    initials: "TP",
+    initials: "VK",
     colorFrom: "#47A4C3",
     colorTo: "#285889",
   },
   {
     id: "c3",
-    name: "Prénom Nom",
-    role: { fr: "Technicien Polyvalent", en: "All-round Technician" },
+    name: "Nathanaël KIKOMA",
+    role: { fr: "Laveur", en: "Car Washer" },
     experience: { fr: "3 ans d'expérience", en: "3 years of experience" },
     image: "/assets/team/c3.jpg",
-    initials: "TP",
+    initials: "NK",
     colorFrom: "#EF762F",
     colorTo: "#285889",
   },
   {
     id: "c4",
-    name: "Prénom Nom",
-    role: { fr: "Technicien Polyvalent", en: "All-round Technician" },
+    name: "Christian ATASHA",
+    role: { fr: "Laveur", en: "Car Washer" },
     experience: { fr: "2 ans d'expérience", en: "2 years of experience" },
     image: "/assets/team/c4.jpg",
-    initials: "TP",
+    initials: "CA",
     colorFrom: "#1a4f7a",
     colorTo: "#47A4C3",
   },
   {
     id: "c5",
-    name: "Prénom Nom",
-    role: { fr: "Technicien Polyvalent", en: "All-round Technician" },
+    name: "Jeris KAZADI",
+    role: { fr: "Laveur", en: "Car Washer" },
     experience: { fr: "2 ans d'expérience", en: "2 years of experience" },
     image: "/assets/team/c5.jpg",
-    initials: "TP",
+    initials: "JK",
     colorFrom: "#285889",
     colorTo: "#EF762F",
   },
   {
     id: "c6",
-    name: "Prénom Nom",
-    role: { fr: "Technicien Polyvalent", en: "All-round Technician" },
+    name: "Jean de Dieu KAKALA",
+    role: { fr: "Laveur", en: "Car Washer" },
     experience: { fr: "3 ans d'expérience", en: "3 years of experience" },
     image: "/assets/team/c6.jpg",
-    initials: "TP",
+    initials: "JK",
     colorFrom: "#47A4C3",
     colorTo: "#EF762F",
   },
   {
     id: "c7",
-    name: "Prénom Nom",
-    role: { fr: "Technicien Polyvalent", en: "All-round Technician" },
+    name: "Audrey KASEREKA",
+    role: { fr: "Laveur", en: "Car Washer" },
     experience: { fr: "2 ans d'expérience", en: "2 years of experience" },
     image: "/assets/team/c7.jpg",
-    initials: "TP",
+    initials: "AK",
     colorFrom: "#EF762F",
     colorTo: "#1a4f7a",
   },
   {
     id: "c8",
-    name: "Prénom Nom",
-    role: { fr: "Technicien Polyvalent", en: "All-round Technician" },
+    name: "Bertin MUKATARA",
+    role: { fr: "Laveur", en: "Car Washer" },
     experience: { fr: "2 ans d'expérience", en: "2 years of experience" },
     image: "/assets/team/c8.jpg",
-    initials: "TP",
+    initials: "BM",
     colorFrom: "#1a4f7a",
     colorTo: "#285889",
   },
   {
     id: "c9",
-    name: "Prénom Nom",
-    role: { fr: "Technicien Polyvalent", en: "All-round Technician" },
+    name: "Dieu Merci MUUMIRWA",
+    role: { fr: "Laveur", en: "Car Washer" },
     experience: { fr: "1 an d'expérience", en: "1 year of experience" },
     image: "/assets/team/c9.jpg",
-    initials: "TP",
+    initials: "DM",
     colorFrom: "#285889",
     colorTo: "#47A4C3",
   },
@@ -220,7 +220,7 @@ export default async function AProposPage({ params }: { params: Promise<{ locale
                 <div className="relative w-full h-full rounded-xl overflow-hidden">
                   <Image
                     src="/assets/atelier.jpg"
-                    alt="Total Klean — Atelier"
+                    alt="Total Klean Atelier"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -265,10 +265,10 @@ export default async function AProposPage({ params }: { params: Promise<{ locale
         </Container>
       </section>
 
-      {/* Management team */}
-      <section id="equipe" className="pt-16 pb-10 bg-[#f8f9fc] overflow-hidden">
-        <Container className="mb-8">
-          <FadeIn>
+      {/* Management team - static grid */}
+      <section id="equipe" className="py-16 bg-[#f8f9fc] overflow-hidden">
+        <Container>
+          <FadeIn className="mb-10">
             <p className="font-body text-xs font-semibold uppercase tracking-[0.18em] text-aqua mb-2">
               {lang === "fr" ? "L'équipe" : "The team"}
             </p>
@@ -281,8 +281,45 @@ export default async function AProposPage({ params }: { params: Promise<{ locale
               className="max-w-xl"
             />
           </FadeIn>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+            {management.map((member, i) => (
+              <FadeIn key={member.id} delay={i * 0.1}>
+                <div className="bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.07)] hover:shadow-[0_16px_44px_rgba(0,0,0,0.13)] hover:-translate-y-1.5 transition-all duration-300">
+                  <div className="relative aspect-[3/4] overflow-hidden">
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                      />
+                    ) : (
+                      <div
+                        className="w-full h-full flex items-center justify-center relative"
+                        style={{ background: `linear-gradient(135deg, ${member.colorFrom}, ${member.colorTo})` }}
+                      >
+                        <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-white/10" />
+                        <div className="absolute -bottom-10 -left-6 w-40 h-40 rounded-full bg-white/10" />
+                        <span className="relative font-heading font-bold text-white/90 text-6xl tracking-tight select-none drop-shadow-sm">
+                          {member.initials}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="px-5 pt-4 pb-5">
+                    <p className="font-heading font-bold text-obsidian text-lg leading-tight">{member.name}</p>
+                    <p className="font-body text-sm text-obsidian/55 mt-1">{member.role[lang]}</p>
+                    {member.experience && (
+                      <p className="font-body text-xs font-semibold text-aqua mt-2">{member.experience[lang]}</p>
+                    )}
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </Container>
-        <TeamCarousel members={management} lang={lang} bg="#f8f9fc" />
       </section>
 
       {/* Cleaners team */}
@@ -295,8 +332,8 @@ export default async function AProposPage({ params }: { params: Promise<{ locale
             <SectionHeading
               heading={lang === "fr" ? "The Cleaners" : "The Cleaners"}
               subtext={lang === "fr"
-                ? "Nos techniciens certifiés — les artisans du résultat impeccable que vous méritez."
-                : "Our certified technicians — the craftsmen behind the flawless result you deserve."}
+                ? "Nos techniciens certifiés, les artisans du résultat impeccable que vous méritez."
+                : "Our certified technicians, the craftsmen behind the flawless result you deserve."}
               align="left"
               className="max-w-xl"
             />

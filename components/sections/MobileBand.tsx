@@ -51,7 +51,7 @@ export function MobileBand() {
           >
             <Image
               src="/assets/services/mobile.jpg"
-              alt="Total Klean Mobile — service à domicile"
+              alt="Total Klean Mobile, service à domicile"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"

@@ -100,12 +100,12 @@ const services = [
     fr: {
       title: "Total Klean Mobile",
       desc: "Notre service phare : nous venons directement à vous, que vous soyez à domicile, au bureau ou n'importe où dans Goma. Tous nos services sont disponibles en version mobile avec le même niveau de qualité.",
-      points: ["Déplacement à domicile ou au bureau", "Tous les services disponibles en mobile", "Équipements professionnels transportés sur place", "Disponible partout dans Goma et environs", "Sur rendez-vous — à votre convenance"],
+      points: ["Déplacement à domicile ou au bureau", "Tous les services disponibles en mobile", "Équipements professionnels transportés sur place", "Disponible partout dans Goma et environs", "Sur rendez-vous, à votre convenance"],
     },
     en: {
       title: "Total Klean Mobile",
       desc: "Our flagship service: we come directly to you, whether at home, at the office or anywhere in Goma. All our services are available in mobile form with the same level of quality.",
-      points: ["Home or office visits", "All services available mobile", "Professional equipment transported on-site", "Available anywhere in Goma and surroundings", "By appointment — at your convenience"],
+      points: ["Home or office visits", "All services available mobile", "Professional equipment transported on-site", "Available anywhere in Goma and surroundings", "By appointment, at your convenience"],
     },
   },
 ];
@@ -162,10 +162,10 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                         sizes="(max-width: 1024px) 100vw, 50vw"
                       />
 
-                      {/* Soft vignette — heavier at bottom, fades to transparent at top */}
+                      {/* Soft vignette - heavier at bottom, fades to transparent at top */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
 
-                      {/* Top row — number + optional featured badge */}
+                      {/* Top row - number + optional featured badge */}
                       <div className="absolute top-5 left-5 right-5 flex items-center justify-between z-10">
                         <span className="bg-white/15 backdrop-blur-md border border-white/25 text-white/80 font-body text-xs font-semibold px-3 py-1.5 rounded-full tracking-widest">
                           {num} / {String(total).padStart(2, "0")}
@@ -178,7 +178,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                         )}
                       </div>
 
-                      {/* Bottom — watermark number */}
+                      {/* Bottom - watermark number */}
                       <div className="absolute bottom-4 left-6 z-10">
                         <span className="font-heading font-black text-white/40 text-8xl leading-none select-none">
                           {num}
@@ -251,7 +251,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                         ))}
                       </ul>
 
-                      {/* CTA — at bottom of the card */}
+                      {/* CTA - at bottom of the card */}
                       <div className="flex items-center gap-3 flex-wrap mt-auto pt-2">
                         <Link
                           href={isFeatured
@@ -300,7 +300,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         </Container>
       </section>
 
-      {/* Bottom CTA — merged */}
+      {/* Bottom CTA - merged */}
       <section className="relative py-16 bg-obsidian overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-baltic/25 blur-[120px]" />

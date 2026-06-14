@@ -96,7 +96,7 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 py-4 sm:py-5 transition-all duration-300">
-      {/* Horizontal blur-drop behind the logo row — fades to transparent */}
+      {/* Horizontal blur-drop behind the logo row - fades to transparent */}
       <div
         className={cn(
           "absolute inset-x-0 top-0 h-24 pointer-events-none transition-opacity duration-300",
@@ -107,7 +107,7 @@ export function Header() {
         }}
       />
       <Container className="flex items-center justify-between relative z-10">
-        {/* Logo — glass bubble appears only once scrolling starts */}
+        {/* Logo - glass bubble appears only once scrolling starts */}
         <Link
           href={localizedHref("/")}
           className={cn(
@@ -141,7 +141,7 @@ export function Header() {
           </span>
         </Link>
 
-        {/* Desktop nav — liquid glass pill */}
+        {/* Desktop nav - liquid glass pill */}
         <nav
           className={cn(
             "hidden lg:flex items-center gap-1 px-5 py-2 rounded-full transition-all duration-300",
@@ -226,8 +226,8 @@ export function Header() {
             className={cn(
               "flex items-center gap-1.5 px-3 py-2 rounded-full font-body text-sm font-medium transition-all duration-300",
               scrolled
-                ? "text-obsidian/60 hover:text-baltic bg-black/5 hover:bg-black/8"
-                : "text-white/70 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20"
+                ? "text-obsidian/70 hover:text-baltic bg-white/80 backdrop-blur-xl border border-black/8 shadow-lg hover:bg-white"
+                : "text-white/90 hover:text-white bg-white/10 backdrop-blur-md border border-white/25 hover:bg-white/20"
             )}
           >
             <Globe size={14} />
@@ -241,7 +241,7 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Mobile hamburger — glass bubble always visible on any background */}
+        {/* Mobile hamburger - glass bubble always visible on any background */}
         <button
           onClick={() => setMobileOpen((v) => !v)}
           className={cn(
@@ -260,7 +260,7 @@ export function Header() {
         </button>
       </Container>
 
-      {/* Mobile menu — dark glass floating panel */}
+      {/* Mobile menu - dark glass floating panel */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
