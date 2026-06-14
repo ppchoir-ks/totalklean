@@ -6,7 +6,6 @@ import { MobileBand } from "@/components/sections/MobileBand";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { Realisations } from "@/components/sections/Realisations";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { Savoirfaire } from "@/components/sections/Savoirfaire";
 import { BlogTeaser } from "@/components/sections/BlogTeaser";
 
 export async function generateMetadata({
@@ -27,7 +26,6 @@ export default function HomePage() {
       <MobileBand />
       <Realisations />
       <Testimonials />
-      <Savoirfaire />
       <BlogTeaser />
     </>
   );

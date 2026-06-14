@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
+import { LogoMarquee } from "@/components/ui/LogoMarquee";
 
 type StatKey = "years" | "vehicles" | "services" | "satisfaction";
 
@@ -51,7 +52,7 @@ export function StatsBar() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="py-16 bg-white border-y border-black/5">
+    <section ref={ref} className="pt-10 pb-8 bg-white border-y border-black/5">
       <Container>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, i) => (
@@ -67,6 +68,7 @@ export function StatsBar() {
             </motion.div>
           ))}
         </div>
+        <LogoMarquee />
       </Container>
     </section>
   );

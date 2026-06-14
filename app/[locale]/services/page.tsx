@@ -2,15 +2,20 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
-import { CheckCircle, ArrowRight } from "lucide-react";
+
+import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SectionBlobs } from "@/components/ui/GlassCard";
+import { FadeIn } from "@/components/ui/FadeIn";
 
 const services = [
   {
     id: "lavage",
     image: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80",
+    accentFrom: "#285889",
+    accentTo: "#47A4C3",
     fr: {
       title: "Lavage basique et complet",
       desc: "Un nettoyage en profondeur de l'intérieur et de l'extérieur de votre véhicule. Nous prenons soin de chaque détail pour vous rendre un habitacle impeccable et une carrosserie brillante.",
@@ -25,6 +30,8 @@ const services = [
   {
     id: "correction-peinture",
     image: "https://images.unsplash.com/photo-1611189870994-5b3ac77a0fb3?w=800&q=80",
+    accentFrom: "#47A4C3",
+    accentTo: "#1a4f7a",
     fr: {
       title: "Correction de la peinture",
       desc: "Le polissage professionnel élimine les rayures légères, les marques de tourbillon et l'oxydation pour révéler l'éclat original de votre carrosserie.",
@@ -39,6 +46,8 @@ const services = [
   {
     id: "ceramique",
     image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&q=80",
+    accentFrom: "#1a4f7a",
+    accentTo: "#285889",
     fr: {
       title: "Protection céramique",
       desc: "Le revêtement céramique crée une barrière protectrice hydrophobe sur votre carrosserie, repoussant l'eau, la saleté et les UV pour une protection longue durée et un éclat exceptionnel.",
@@ -53,6 +62,8 @@ const services = [
   {
     id: "phares",
     image: "https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=800&q=80",
+    accentFrom: "#285889",
+    accentTo: "#47A4C3",
     fr: {
       title: "Rénovation des phares",
       desc: "Des phares ternes ou jaunis compromettent à la fois l'esthétique de votre véhicule et votre sécurité. Notre traitement restaure leur clarté et leur luminosité d'origine.",
@@ -67,6 +78,8 @@ const services = [
   {
     id: "moteur",
     image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80",
+    accentFrom: "#47A4C3",
+    accentTo: "#285889",
     fr: {
       title: "Nettoyage moteur",
       desc: "Un compartiment moteur propre facilite la détection des fuites, améliore la dissipation thermique et témoigne du soin apporté à l'entretien global du véhicule.",
@@ -82,6 +95,8 @@ const services = [
     id: "mobile",
     image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
     featured: true,
+    accentFrom: "#EF762F",
+    accentTo: "#c45a18",
     fr: {
       title: "Total Klean Mobile",
       desc: "Notre service phare : nous venons directement à vous, que vous soyez à domicile, au bureau ou n'importe où dans Goma. Tous nos services sont disponibles en version mobile avec le même niveau de qualité.",
@@ -103,6 +118,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const lang = locale as "fr" | "en";
+  const total = services.length;
 
   return (
     <>
@@ -114,80 +130,220 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
           : "A complete range of services to restore, protect and maintain your vehicle."}
       />
 
-      <section className="py-24 bg-white">
-        <Container>
-          <div className="space-y-24">
-            {services.map((svc, i) => (
-              <div
-                key={svc.id}
-                id={svc.id}
-                className={`grid lg:grid-cols-2 gap-14 items-center ${i % 2 === 1 ? "lg:grid-flow-dense" : ""}`}
-              >
-                {/* Image */}
-                <div className={`relative h-72 lg:h-[400px] rounded-card overflow-hidden ${i % 2 === 1 ? "lg:col-start-2" : ""}`}>
-                  <Image
-                    src={svc.image}
-                    alt={svc[lang].title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  {svc.featured && (
-                    <span className="absolute top-4 left-4 bg-amber text-white font-body text-xs font-semibold px-3 py-1.5 rounded-full">
-                      {lang === "fr" ? "Service phare" : "Flagship service"}
-                    </span>
-                  )}
-                </div>
+      <section className="relative py-16 bg-gradient-to-b from-[#f0f4f9] to-white overflow-hidden">
+        <SectionBlobs variant="default" />
+        <Container className="relative z-10">
+          <div className="space-y-16">
+            {services.map((svc, i) => {
+              const isReversed = i % 2 === 1;
+              const num = String(i + 1).padStart(2, "0");
+              const isFeatured = !!svc.featured;
 
-                {/* Text */}
-                <div className={i % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}>
-                  <p className="font-body text-xs font-semibold uppercase tracking-widest text-aqua mb-3">
-                    {`0${i + 1}`}
-                  </p>
-                  <h2 className="font-heading font-bold text-obsidian text-3xl md:text-4xl mb-5">
-                    {svc[lang].title}
-                  </h2>
-                  <p className="font-body text-obsidian/60 leading-relaxed mb-7">
-                    {svc[lang].desc}
-                  </p>
-                  <ul className="space-y-3 mb-8">
-                    {svc[lang].points.map((point) => (
-                      <li key={point} className="flex items-start gap-3">
-                        <CheckCircle size={17} className="text-aqua mt-0.5 flex-shrink-0" />
-                        <span className="font-body text-sm text-obsidian/70">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href={`/${locale}/cotation`}
-                    className="inline-flex items-center gap-2 px-6 py-3.5 bg-amber text-white font-body font-semibold rounded-btn hover:bg-baltic transition-colors duration-200 group"
+              return (
+                <div
+                  key={svc.id}
+                  id={svc.id}
+                  className={`grid lg:grid-cols-2 gap-8 items-stretch ${isReversed ? "lg:grid-flow-dense" : ""}`}
+                >
+                  {/* ── IMAGE CARD ──────────────────────────────────── */}
+                  <FadeIn
+                    x={isReversed ? 40 : -40}
+                    y={0}
+                    className={isReversed ? "lg:col-start-2" : ""}
                   >
-                    {lang === "fr" ? "Demander une cotation" : "Request a quote"}
-                    <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
-                  </Link>
+                    <div className="relative h-[300px] lg:h-[380px] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.16)] group">
+
+                      {/* Photo */}
+                      <Image
+                        src={svc.image}
+                        alt={svc[lang].title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+
+                      {/* Soft vignette — heavier at bottom, fades to transparent at top */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+
+                      {/* Top row — number + optional featured badge */}
+                      <div className="absolute top-5 left-5 right-5 flex items-center justify-between z-10">
+                        <span className="bg-white/15 backdrop-blur-md border border-white/25 text-white/80 font-body text-xs font-semibold px-3 py-1.5 rounded-full tracking-widest">
+                          {num} / {String(total).padStart(2, "0")}
+                        </span>
+                        {isFeatured && (
+                          <span className="flex items-center gap-1.5 bg-amber/90 backdrop-blur-md text-white font-body text-xs font-semibold px-3 py-1.5 rounded-full shadow-md">
+                            <Sparkles size={11} />
+                            {lang === "fr" ? "Service phare" : "Flagship"}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Bottom — watermark number */}
+                      <div className="absolute bottom-4 left-6 z-10">
+                        <span className="font-heading font-black text-white/40 text-8xl leading-none select-none">
+                          {num}
+                        </span>
+                      </div>
+
+                      {/* Decorative color bleed from accent */}
+                      <div
+                        className="absolute inset-0 opacity-20 mix-blend-color-dodge"
+                        style={{
+                          background: `radial-gradient(ellipse at 80% 0%, ${svc.accentFrom}88 0%, transparent 60%)`,
+                        }}
+                      />
+                    </div>
+                  </FadeIn>
+
+                  {/* ── GLASS DESCRIPTION CARD ──────────────────────── */}
+                  <FadeIn
+                    x={isReversed ? -40 : 40}
+                    y={0}
+                    delay={0.12}
+                    className={`flex flex-col ${isReversed ? "lg:col-start-1 lg:row-start-1" : ""}`}
+                  >
+                    <div className="flex flex-col flex-1 bg-white/80 backdrop-blur-xl border border-white/65 shadow-[0_8px_48px_rgba(40,88,137,0.1)] rounded-3xl p-8 lg:p-10 relative overflow-hidden">
+
+                      {/* Subtle gradient accent in top-right corner */}
+                      <div
+                        className="absolute -top-16 -right-16 w-48 h-48 rounded-full opacity-[0.07] blur-2xl pointer-events-none"
+                        style={{ background: `radial-gradient(circle, ${svc.accentFrom}, ${svc.accentTo})` }}
+                      />
+
+                      {/* Number eyebrow */}
+                      <p
+                        className="font-body text-xs font-bold uppercase tracking-[0.22em] mb-3"
+                        style={{ color: isFeatured ? "#EF762F" : "#47A4C3" }}
+                      >
+                        {num}
+                      </p>
+
+                      {/* Title */}
+                      <h2 className="font-heading font-bold text-obsidian text-3xl md:text-4xl mb-4 leading-tight">
+                        {svc[lang].title}
+                      </h2>
+
+                      {/* Divider */}
+                      <div
+                        className="w-12 h-0.5 rounded-full mb-6"
+                        style={{ background: `linear-gradient(to right, ${svc.accentFrom}, ${svc.accentTo})` }}
+                      />
+
+                      {/* Description */}
+                      <p className="font-body text-obsidian/60 leading-relaxed mb-7">
+                        {svc[lang].desc}
+                      </p>
+
+                      {/* Feature points */}
+                      <ul className="space-y-3 mb-8 flex-1">
+                        {svc[lang].points.map((point) => (
+                          <li key={point} className="flex items-start gap-3">
+                            <div
+                              className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                              style={{ background: `linear-gradient(135deg, ${svc.accentFrom}22, ${svc.accentTo}22)` }}
+                            >
+                              <svg viewBox="0 0 12 12" width="9" height="9" fill="none">
+                                <path d="M2 6l2.5 2.5L10 3.5" stroke={svc.accentFrom} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                            </div>
+                            <span className="font-body text-sm text-obsidian/65 leading-snug">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* CTA — at bottom of the card */}
+                      <div className="flex items-center gap-3 flex-wrap mt-auto pt-2">
+                        <Link
+                          href={isFeatured
+                            ? `https://wa.me/243997806193?text=${encodeURIComponent(lang === "fr" ? "Bonjour Total Klean, je souhaite réserver le service Mobile." : "Hello Total Klean, I'd like to book the Mobile service.")}`
+                            : `/${locale}/cotation`}
+                          {...(isFeatured ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                          className="relative overflow-hidden inline-flex items-center gap-2 px-6 py-3.5 text-white font-body font-semibold rounded-btn transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 group"
+                          style={{
+                            background: isFeatured
+                              ? "linear-gradient(135deg, #EF762F, #c45a18)"
+                              : "linear-gradient(135deg, #285889, #47A4C3)",
+                          }}
+                        >
+                          {/* Hover: blue → orange, orange → deep blue */}
+                          <span
+                            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                            style={{
+                              background: isFeatured
+                                ? "linear-gradient(135deg, #285889, #1a4f7a)"
+                                : "linear-gradient(135deg, #EF762F, #c45a18)",
+                            }}
+                          />
+                          <span className="relative flex items-center gap-2">
+                            {isFeatured
+                              ? <><MessageCircle size={15} />{lang === "fr" ? "Réserver via WhatsApp" : "Book via WhatsApp"}</>
+                              : <>{lang === "fr" ? "Demander une cotation" : "Request a quote"}<ArrowRight size={15} className="transition-transform group-hover:translate-x-1" /></>
+                            }
+                          </span>
+                        </Link>
+                        {!isFeatured && (
+                          <Link
+                            href={`/${locale}/contact`}
+                            className="inline-flex items-center gap-1.5 font-body text-sm font-medium text-obsidian/45 hover:text-baltic transition-colors"
+                          >
+                            {lang === "fr" ? "Ou nous contacter" : "Or contact us"}
+                            <ArrowRight size={13} />
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  </FadeIn>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </Container>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="py-20 bg-[#f8f9fc]">
-        <Container className="text-center">
-          <SectionHeading
-            heading={lang === "fr" ? "Pas sûr du service dont vous avez besoin ?" : "Not sure which service you need?"}
-            subtext={lang === "fr"
-              ? "Contactez-nous — nous évaluerons votre véhicule et vous proposerons la solution adaptée."
-              : "Contact us — we'll assess your vehicle and propose the right solution."}
-            className="mb-8"
-          />
-          <Link
-            href={`/${locale}/contact`}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-baltic text-white font-body font-semibold rounded-btn hover:bg-amber transition-colors duration-200"
-          >
-            {lang === "fr" ? "Nous contacter" : "Contact us"}
-          </Link>
+      {/* Bottom CTA — merged */}
+      <section className="relative py-16 bg-obsidian overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-baltic/25 blur-[120px]" />
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-aqua/10 blur-[100px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.015] to-transparent" />
+        </div>
+        <Container className="relative z-10 text-center">
+          <FadeIn>
+            <p className="font-body text-xs font-semibold uppercase tracking-[0.18em] text-aqua mb-4">
+              Total Klean
+            </p>
+            <h2 className="font-heading font-bold text-white text-3xl md:text-4xl lg:text-5xl mb-4 max-w-2xl mx-auto leading-tight">
+              {lang === "fr"
+                ? "Prêt à redonner de l'éclat à votre véhicule ?"
+                : "Ready to restore your vehicle's brilliance?"}
+            </h2>
+            <p className="font-body text-white/50 max-w-lg mx-auto mb-10 leading-relaxed">
+              {lang === "fr"
+                ? "Consultez nos tarifs et réservez directement, ou contactez notre équipe pour un conseil personnalisé."
+                : "Browse our pricing and book directly, or reach out to our team for personalised advice."}
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              {/* Orange → deep blue on hover */}
+              <Link
+                href={`/${locale}/cotation`}
+                className="relative overflow-hidden group inline-flex items-center gap-2 px-8 py-4 bg-amber text-white font-body font-semibold rounded-btn shadow-[0_4px_20px_rgba(239,118,47,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(40,88,137,0.4)]"
+              >
+                <span
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ background: "linear-gradient(135deg, #285889, #1a4f7a)" }}
+                />
+                <span className="relative">{lang === "fr" ? "Voir les tarifs" : "See pricing"}</span>
+              </Link>
+              {/* Outline → orange on hover */}
+              <Link
+                href={`/${locale}/contact`}
+                className="relative overflow-hidden group inline-flex items-center gap-2 px-8 py-4 border border-white/20 font-body font-semibold rounded-btn transition-all duration-300 hover:-translate-y-0.5 hover:border-transparent hover:shadow-[0_8px_28px_rgba(255,255,255,0.15)]"
+              >
+                <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white" />
+                <span className="relative text-white/80 group-hover:text-obsidian transition-colors duration-300">{lang === "fr" ? "Nous contacter" : "Contact us"}</span>
+              </Link>
+            </div>
+          </FadeIn>
         </Container>
       </section>
     </>

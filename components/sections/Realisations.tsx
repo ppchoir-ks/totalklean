@@ -47,9 +47,9 @@ export function Realisations() {
   const locale = useLocale();
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="py-14 bg-white overflow-hidden">
       <Container>
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
           {/* Left: heading + numbered steps */}
           <div>
             <SectionHeading
@@ -57,7 +57,7 @@ export function Realisations() {
               heading={t("heading")}
               subtext={t("subtext")}
               align="left"
-              className="mb-12"
+              className="mb-8"
             />
 
             <div className="space-y-6">

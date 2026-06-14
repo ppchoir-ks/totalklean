@@ -27,9 +27,9 @@ export function Savoirfaire() {
   const locale = useLocale() as "fr" | "en";
 
   return (
-    <section className="py-24 bg-obsidian overflow-hidden">
+    <section className="py-14 bg-obsidian overflow-hidden">
       <Container>
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
           {/* Image side */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}

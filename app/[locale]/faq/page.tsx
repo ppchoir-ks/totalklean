@@ -2,10 +2,13 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
+import { SectionBlobs } from "@/components/ui/GlassCard";
 import { useLocale } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const faqs = {
   fr: [
@@ -62,18 +65,32 @@ const faqs = {
   ],
 };
 
-function FAQItem({ q, a }: { q: string; a: string }) {
+function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-black/8">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: index * 0.07 }}
+      className={cn(
+        "rounded-2xl border transition-all duration-300 overflow-hidden",
+        open
+          ? "bg-white/90 backdrop-blur-md border-baltic/20 shadow-[0_12px_40px_rgba(40,88,137,0.12)]"
+          : "bg-white/70 backdrop-blur-sm border-white/60 shadow-[0_4px_20px_rgba(40,88,137,0.06)] hover:shadow-[0_8px_32px_rgba(40,88,137,0.1)] hover:-translate-y-0.5"
+      )}
+    >
       <button
         onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-start justify-between gap-4 py-5 text-left"
+        className="w-full flex items-start justify-between gap-4 px-7 py-5 text-left"
       >
         <span className="font-heading font-semibold text-obsidian text-base">{q}</span>
         <ChevronDown
           size={18}
-          className={`flex-shrink-0 text-baltic mt-0.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          className={cn(
+            "flex-shrink-0 text-baltic mt-0.5 transition-transform duration-300",
+            open ? "rotate-180" : ""
+          )}
         />
       </button>
       <AnimatePresence>
@@ -82,14 +99,14 @@ function FAQItem({ q, a }: { q: string; a: string }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-5 font-body text-sm text-obsidian/60 leading-relaxed">{a}</p>
+            <p className="px-7 pb-6 font-body text-sm text-obsidian/60 leading-relaxed">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
 
@@ -105,29 +122,38 @@ export default function FAQPage() {
           ? "Tout ce que vous devez savoir sur nos services."
           : "Everything you need to know about our services."}
       />
-      <section className="py-24 bg-white">
-        <Container className="max-w-3xl">
-          <div>
-            {faqs[locale].map((item) => (
-              <FAQItem key={item.q} {...item} />
+
+      <section className="relative py-16 bg-gradient-to-b from-[#f0f4f9] to-white overflow-hidden">
+        <SectionBlobs variant="cool" />
+        <Container className="relative z-10 max-w-3xl">
+          <div className="space-y-3 mb-8">
+            {faqs[locale].map((item, i) => (
+              <FAQItem key={item.q} {...item} index={i} />
             ))}
           </div>
-          <div className="mt-14 bg-baltic/5 border border-baltic/10 rounded-card p-7 text-center">
-            <p className="font-heading font-semibold text-obsidian text-lg mb-2">
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="bg-white/85 backdrop-blur-md border border-white/70 shadow-[0_8px_32px_rgba(40,88,137,0.1)] rounded-2xl p-8 text-center"
+          >
+            <p className="font-heading font-bold text-obsidian text-xl mb-2">
               {locale === "fr" ? "Vous n'avez pas trouvé votre réponse ?" : "Didn't find your answer?"}
             </p>
-            <p className="font-body text-sm text-obsidian/55 mb-5">
+            <p className="font-body text-sm text-obsidian/50 mb-6">
               {locale === "fr"
                 ? "Contactez-nous directement — nous serons ravis de vous aider."
                 : "Contact us directly — we'll be happy to help."}
             </p>
-            <a
+            <Link
               href={`/${locale}/contact`}
-              className="inline-block px-6 py-3 bg-baltic text-white font-body font-semibold rounded-btn hover:bg-amber transition-colors"
+              className="inline-block px-7 py-3 bg-baltic text-white font-body font-semibold rounded-btn hover:bg-amber transition-colors duration-200 shadow-md"
             >
               {locale === "fr" ? "Nous contacter" : "Contact us"}
-            </a>
-          </div>
+            </Link>
+          </motion.div>
         </Container>
       </section>
     </>

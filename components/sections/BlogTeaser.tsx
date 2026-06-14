@@ -55,9 +55,9 @@ export function BlogTeaser() {
   const locale = useLocale() as "fr" | "en";
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-14 bg-white">
       <Container>
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
           <SectionHeading
             eyebrow="Blog"
             heading={t("heading")}

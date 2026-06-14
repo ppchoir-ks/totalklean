@@ -12,9 +12,9 @@ export function MobileBand() {
   const locale = useLocale();
 
   return (
-    <section className="py-24 bg-baltic overflow-hidden">
+    <section className="py-14 bg-baltic overflow-hidden">
       <Container>
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
