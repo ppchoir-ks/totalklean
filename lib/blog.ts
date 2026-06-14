@@ -11,7 +11,7 @@ export const posts: BlogPost[] = [
   {
     slug: "nettoyage-regulier-essentiel",
     tag: "Lavage",
-    image: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=1200&q=80",
+    image: "/assets/blog/blog-lavage.jpg",
     date: "2025-01-15",
     fr: {
       title: "Entretenir son véhicule : Pourquoi un nettoyage régulier est-il essentiel ?",
@@ -59,7 +59,7 @@ At Total Klean, we offer washing packages tailored to your needs and budget — 
   {
     slug: "polissage-excellence-total-klean",
     tag: "Polissage",
-    image: "https://images.unsplash.com/photo-1611189870994-5b3ac77a0fb3?w=1200&q=80",
+    image: "/assets/blog/blog-polissage.jpg",
     date: "2025-02-08",
     fr: {
       title: "Polissage automobile : L'excellence signée Total Klean",
@@ -107,7 +107,7 @@ Contact Total Klean for a free paint assessment.`,
   {
     slug: "total-klean-mobile-innovation-goma",
     tag: "Mobile",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+    image: "/assets/blog/blog-mobile.jpg",
     date: "2025-03-20",
     fr: {
       title: "Total Klean Mobile : L'innovation au service du nettoyage automobile à Goma",

@@ -40,7 +40,7 @@ export function Savoirfaire() {
           >
             <div className="relative h-80 lg:h-[480px] rounded-card overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1611189870994-5b3ac77a0fb3?w=800&q=80"
+                src="/assets/services/polissage.jpg"
                 alt="Polissage professionnel — Total Klean"
                 fill
                 className="object-cover"

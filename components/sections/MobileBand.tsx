@@ -50,7 +50,7 @@ export function MobileBand() {
             className="relative h-72 lg:h-96 rounded-card overflow-hidden"
           >
             <Image
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+              src="/assets/services/mobile.jpg"
               alt="Total Klean Mobile — service à domicile"
               fill
               className="object-cover"

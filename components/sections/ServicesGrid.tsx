@@ -14,7 +14,7 @@ const services = [
   {
     id: "lavage",
     anchor: "#lavage",
-    image: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80",
+    image: "/assets/services/lavage.jpg",
     frLabel: "Lavage basique et complet",
     enLabel: "Basic & Full Wash",
     frDesc: "Nettoyage intérieur et extérieur minutieux, de la carrosserie aux moindres détails.",
@@ -23,7 +23,7 @@ const services = [
   {
     id: "peinture",
     anchor: "#correction-peinture",
-    image: "https://images.unsplash.com/photo-1611189870994-5b3ac77a0fb3?w=800&q=80",
+    image: "/assets/services/polissage.jpg",
     frLabel: "Correction de la peinture",
     enLabel: "Paint Correction",
     frDesc: "Élimination des rayures et oxydation pour retrouver une carrosserie impeccable.",
@@ -32,7 +32,7 @@ const services = [
   {
     id: "ceramique",
     anchor: "#ceramique",
-    image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&q=80",
+    image: "/assets/services/ceramic.jpg",
     frLabel: "Protection céramique",
     enLabel: "Ceramic Protection",
     frDesc: "Revêtement hydrophobe longue durée qui protège et sublime votre véhicule.",
@@ -41,7 +41,7 @@ const services = [
   {
     id: "phares",
     anchor: "#phares",
-    image: "https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=800&q=80",
+    image: "/assets/services/phares.jpg",
     frLabel: "Rénovation des phares",
     enLabel: "Headlight Restoration",
     frDesc: "Restauration de la clarté et de l'éclat de vos optiques ternis ou jaunis.",
@@ -50,7 +50,7 @@ const services = [
   {
     id: "moteur",
     anchor: "#moteur",
-    image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80",
+    image: "/assets/services/moteur.jpg",
     frLabel: "Nettoyage moteur",
     enLabel: "Engine Cleaning",
     frDesc: "Dégraissage en profondeur du compartiment moteur pour un entretien optimal.",
@@ -59,7 +59,7 @@ const services = [
   {
     id: "mobile",
     anchor: "#mobile",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    image: "/assets/services/mobile.jpg",
     frLabel: "Total Klean Mobile",
     enLabel: "Total Klean Mobile",
     frDesc: "Tous nos services livrés directement à votre porte — chez vous, au bureau.",

@@ -26,7 +26,7 @@ export function Hero() {
       {/* Parallax background */}
       <motion.div style={{ y: imageY }} className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=80"
+          src="/assets/hero-bg.jpg"
           alt="Voiture en cours de préparation esthétique professionnelle"
           fill
           className="object-cover"

@@ -13,7 +13,7 @@ import { FadeIn } from "@/components/ui/FadeIn";
 const services = [
   {
     id: "lavage",
-    image: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80",
+    image: "/assets/services/lavage.jpg",
     accentFrom: "#285889",
     accentTo: "#47A4C3",
     fr: {
@@ -29,7 +29,7 @@ const services = [
   },
   {
     id: "correction-peinture",
-    image: "https://images.unsplash.com/photo-1611189870994-5b3ac77a0fb3?w=800&q=80",
+    image: "/assets/services/polissage.jpg",
     accentFrom: "#47A4C3",
     accentTo: "#1a4f7a",
     fr: {
@@ -45,7 +45,7 @@ const services = [
   },
   {
     id: "ceramique",
-    image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&q=80",
+    image: "/assets/services/ceramic.jpg",
     accentFrom: "#1a4f7a",
     accentTo: "#285889",
     fr: {
@@ -61,7 +61,7 @@ const services = [
   },
   {
     id: "phares",
-    image: "https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=800&q=80",
+    image: "/assets/services/phares.jpg",
     accentFrom: "#285889",
     accentTo: "#47A4C3",
     fr: {
@@ -77,7 +77,7 @@ const services = [
   },
   {
     id: "moteur",
-    image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80",
+    image: "/assets/services/moteur.jpg",
     accentFrom: "#47A4C3",
     accentTo: "#285889",
     fr: {
@@ -93,7 +93,7 @@ const services = [
   },
   {
     id: "mobile",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    image: "/assets/services/mobile.jpg",
     featured: true,
     accentFrom: "#EF762F",
     accentTo: "#c45a18",

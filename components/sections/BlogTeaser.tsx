@@ -11,7 +11,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 const posts = [
   {
     slug: "nettoyage-regulier-essentiel",
-    image: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=600&q=75",
+    image: "/assets/blog/blog-lavage.jpg",
     tag: "Lavage",
     fr: {
       title: "Entretenir son véhicule : Pourquoi un nettoyage régulier est-il essentiel ?",
@@ -24,7 +24,7 @@ const posts = [
   },
   {
     slug: "polissage-excellence-total-klean",
-    image: "https://images.unsplash.com/photo-1611189870994-5b3ac77a0fb3?w=600&q=75",
+    image: "/assets/blog/blog-polissage.jpg",
     tag: "Polissage",
     fr: {
       title: "Polissage automobile : L'excellence signée Total Klean",
@@ -37,7 +37,7 @@ const posts = [
   },
   {
     slug: "total-klean-mobile-innovation-goma",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75",
+    image: "/assets/blog/blog-mobile.jpg",
     tag: "Mobile",
     fr: {
       title: "Total Klean Mobile : L'innovation au service du nettoyage automobile à Goma",
