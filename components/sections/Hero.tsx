@@ -79,7 +79,7 @@ export function Hero() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="hidden lg:flex flex-col gap-4 absolute right-8 xl:right-0 bottom-24"
+          className="hidden lg:flex flex-col gap-4 absolute right-8 xl:right-10 bottom-24"
         >
           {[
             { value: "5+", label: locale === "fr" ? "Ans d'expérience" : "Years experience" },

@@ -49,7 +49,7 @@ function CountUp({ target, suffix, active }: { target: number; suffix: string; a
 export function StatsBar() {
   const t = useTranslations("stats");
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-10px" });
 
   return (
     <section ref={ref} className="pt-10 pb-8 bg-white border-y border-black/5">
