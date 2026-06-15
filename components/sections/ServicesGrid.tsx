@@ -69,32 +69,38 @@ const services = [
 ];
 
 const N = services.length;
-const AUTO_DELAY    = 3000;   // ms between auto-advances (normal cards)
-const MOBILE_DELAY  = 7000;   // ms for the Total Klean Mobile card (featured)
-const CLICK_PAUSE   = 6000;   // ms to stay paused after a user interaction
-const EASE = "cubic-bezier(0.4,0,0.2,1)";
+const AUTO_DELAY   = 3000;
+const MOBILE_DELAY = 7000;
+const CLICK_PAUSE  = 6000;
+const EASE     = "cubic-bezier(0.4,0,0.2,1)";
 const DURATION = "0.65s";
 
-function cardStyle(diff: number) {
-  if (diff === 0) return { flexGrow: 5, mr: 10, opacity: 1 };
-  if (diff === 1) return { flexGrow: 1.8, mr: 10, opacity: 1 };
-  if (diff === 2) return { flexGrow: 1, mr: 0, opacity: 1 };
+function cardStyle(diff: number, mobile: boolean) {
+  if (diff === 0) return { flexGrow: 5,   mr: 10, opacity: 1 };
+  if (diff === 1) return { flexGrow: mobile ? 0.6 : 1.8, mr: mobile ? 0 : 10, opacity: 1 };
+  if (!mobile && diff === 2) return { flexGrow: 1, mr: 0, opacity: 1 };
   return { flexGrow: 0, mr: 0, opacity: 0 };
 }
 
 export function ServicesGrid() {
-  const [active, setActive] = useState(0);
+  const [active, setActive]   = useState(0);
+  const [mobile, setMobile]   = useState(false);
   const autoTimerRef  = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const userPausedRef = useRef(false);
-  const activeRef     = useRef(0); // mirrors `active` so callbacks always read the latest value
-  const t = useTranslations("services");
+  const activeRef     = useRef(0);
+  const t      = useTranslations("services");
   const locale = useLocale();
 
-  // Keep activeRef in sync so the pause-timer callback can read the current card.
   useEffect(() => { activeRef.current = active; }, [active]);
 
-  // Schedule the next automatic card advance. Uses a longer delay for the featured card.
+  useEffect(() => {
+    const update = () => setMobile(window.innerWidth < 1024);
+    update();
+    window.addEventListener("resize", update, { passive: true });
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   const scheduleAutoAdvance = useCallback(() => {
     if (autoTimerRef.current) clearTimeout(autoTimerRef.current);
     const delay = services[activeRef.current]?.featured ? MOBILE_DELAY : AUTO_DELAY;
@@ -103,12 +109,9 @@ export function ServicesGrid() {
     }, delay);
   }, []);
 
-  // Called on every user interaction (card click, dot click).
-  // Cancels the pending auto-advance and schedules a resume after CLICK_PAUSE ms.
   const handleUserInteraction = useCallback(() => {
     if (autoTimerRef.current) clearTimeout(autoTimerRef.current);
     userPausedRef.current = true;
-
     if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
     pauseTimerRef.current = setTimeout(() => {
       userPausedRef.current = false;
@@ -116,13 +119,11 @@ export function ServicesGrid() {
     }, CLICK_PAUSE);
   }, [scheduleAutoAdvance]);
 
-  // Re-schedule auto-advance whenever `active` changes, but skip if user is paused.
   useEffect(() => {
     if (!userPausedRef.current) scheduleAutoAdvance();
     return () => { if (autoTimerRef.current) clearTimeout(autoTimerRef.current); };
   }, [active, scheduleAutoAdvance]);
 
-  // Cleanup pause timer on unmount
   useEffect(() => {
     return () => { if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current); };
   }, []);
@@ -153,66 +154,14 @@ export function ServicesGrid() {
         </div>
       </Container>
 
-      {/* Mobile: snap-scroll, one card + peek of next */}
-      <div className="block lg:hidden overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 pb-4">
-        <div className="flex gap-3" style={{ width: "max-content" }}>
-          {services.map((svc) => {
-            const label = locale === "fr" ? svc.frLabel : svc.enLabel;
-            const desc  = locale === "fr" ? svc.frDesc  : svc.enDesc;
-            return (
-              <div
-                key={svc.id}
-                className="snap-center flex-shrink-0 relative rounded-2xl overflow-hidden"
-                style={{ width: "82vw", height: "380px" }}
-              >
-                <img
-                  src={svc.image}
-                  alt={label}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.08) 45%, rgba(0,0,0,0.68) 100%)" }}
-                />
-                <div className="absolute inset-0 p-6 flex flex-col">
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="font-heading font-bold text-white text-xl leading-tight max-w-[75%]">{label}</h3>
-                    <a
-                      href={`/${locale}/services${svc.anchor}`}
-                      className="shrink-0 mt-0.5 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md"
-                    >
-                      <ArrowRight size={16} className="text-obsidian" />
-                    </a>
-                  </div>
-                  <p className="font-body text-sm text-white/70 leading-relaxed mt-3 line-clamp-3">{desc}</p>
-                  {svc.featured && (
-                    <div className="mt-auto">
-                      <a
-                        href={`https://wa.me/243997806193?text=${encodeURIComponent(locale === "fr" ? "Bonjour Total Klean, je souhaite réserver le service Mobile." : "Hello Total Klean, I'd like to book the Mobile service.")}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-amber text-white font-body text-sm font-semibold rounded-full shadow-md"
-                      >
-                        <MessageCircle size={14} />
-                        {locale === "fr" ? "Réserver via WhatsApp" : "Book via WhatsApp"}
-                      </a>
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Desktop: accordion carousel */}
-      <div className="hidden lg:block overflow-hidden px-4 sm:px-8 lg:px-16">
+      {/* Carousel - same design on all screen sizes; mobile shows 1 peek card, desktop 2 */}
+      <div className="overflow-hidden px-4 sm:px-8 lg:px-16">
         <div className="flex" style={{ height: "420px" }}>
           {services.map((svc, i) => {
             const diff = i - active;
-            const { flexGrow, mr, opacity } = cardStyle(diff);
-            const isActive = diff === 0;
-            const isVisible = diff >= 0 && diff <= 2;
+            const { flexGrow, mr, opacity } = cardStyle(diff, mobile);
+            const isActive  = diff === 0;
+            const isVisible = mobile ? (diff >= 0 && diff <= 1) : (diff >= 0 && diff <= 2);
             const label = locale === "fr" ? svc.frLabel : svc.enLabel;
             const desc  = locale === "fr" ? svc.frDesc  : svc.enDesc;
 
@@ -232,7 +181,6 @@ export function ServicesGrid() {
                   transition: `flex ${DURATION} ${EASE}, margin ${DURATION} ${EASE}, opacity 0.4s ease`,
                 }}
               >
-                {/* Background image */}
                 <Image
                   src={svc.image}
                   alt={label}
@@ -246,7 +194,6 @@ export function ServicesGrid() {
                   sizes="(max-width: 768px) 80vw, 55vw"
                 />
 
-                {/* Gradient overlay */}
                 <div
                   style={{
                     position: "absolute",
@@ -258,7 +205,6 @@ export function ServicesGrid() {
                   }}
                 />
 
-                {/* Active card content */}
                 <AnimatePresence>
                   {isActive && (
                     <motion.div
@@ -308,7 +254,6 @@ export function ServicesGrid() {
                   )}
                 </AnimatePresence>
 
-                {/* Peek card: vertical title label */}
                 {isVisible && !isActive && (
                   <div className="absolute inset-0 flex items-end justify-start p-4">
                     <span
