@@ -185,8 +185,8 @@ export function Testimonials() {
 
       <div className="relative">
         {/* Edge fades */}
-        <div className="pointer-events-none absolute left-0 inset-y-0 w-20 bg-gradient-to-r from-[#f8f9fc] to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 inset-y-0 w-20 bg-gradient-to-l from-[#f8f9fc] to-transparent z-10" />
+        <div className="pointer-events-none absolute left-0 inset-y-0 w-6 sm:w-10 bg-gradient-to-r from-[#f8f9fc] to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 inset-y-0 w-6 sm:w-10 bg-gradient-to-l from-[#f8f9fc] to-transparent z-10" />
 
         <div
           ref={containerRef}
