@@ -62,7 +62,6 @@ function TestimonialCard({ name, initials, colorFrom, colorTo, text, service, on
                  shadow-[0_4px_24px_rgba(0,0,0,0.07)] hover:shadow-[0_16px_44px_rgba(0,0,0,0.13)]
                  hover:-translate-y-1 transition-all duration-300 mr-6 select-none"
     >
-      {/* Gradient avatar block */}
       <div
         className="relative h-52 flex items-center justify-center overflow-hidden"
         style={{ background: `linear-gradient(135deg, ${colorFrom}, ${colorTo})` }}
@@ -74,7 +73,6 @@ function TestimonialCard({ name, initials, colorFrom, colorTo, text, service, on
         </span>
       </div>
 
-      {/* Content */}
       <div className="p-6">
         <p className="font-heading font-bold text-obsidian text-base leading-snug">{name}</p>
         <p className="font-body text-xs text-obsidian/50 mt-0.5 mb-2">{service}</p>
@@ -87,72 +85,66 @@ function TestimonialCard({ name, initials, colorFrom, colorTo, text, service, on
   );
 }
 
-// 4 repetitions ensures the loop point is always reachable within the scrollable range
-const NUM_REPS = 4;
-const RESUME_DELAY = 7000; // ms
+const SPEED = 0.04;       // px/ms
+const CARD_WIDTH = 324;   // 300px card + 24px (mr-6)
+const RESUME_DELAY = 7000;
 
 export function Testimonials() {
   const t = useTranslations("testimonials");
-  const containerRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef<number>(0);
+  const trackRef    = useRef<HTMLDivElement>(null);
+  const rafRef      = useRef<number>(0);
   const prevTimeRef = useRef<number>(0);
-  const pausedRef = useRef(false);
-  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const offsetRef   = useRef(0);
+  const pausedRef   = useRef(false);
+  const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const scheduleResume = useCallback(() => {
-    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
-    resumeTimerRef.current = setTimeout(() => {
-      pausedRef.current = false;
-    }, RESUME_DELAY);
+    if (resumeTimer.current) clearTimeout(resumeTimer.current);
+    resumeTimer.current = setTimeout(() => { pausedRef.current = false; }, RESUME_DELAY);
   }, []);
 
-  const handleCardClick = useCallback(() => {
+  const pause = useCallback(() => {
     pausedRef.current = true;
     scheduleResume();
   }, [scheduleResume]);
 
-  // Only resets the resume timer when the user manually scrolls while paused.
-  // The RAF loop also fires scroll events via scrollLeft assignment, but those
-  // only occur when pausedRef.current is false, so the guard prevents false resets.
-  const handleScroll = useCallback(() => {
-    if (pausedRef.current) {
-      scheduleResume();
-    }
-  }, [scheduleResume]);
+  const loopWidth = testimonials.length * CARD_WIDTH;
 
   useEffect(() => {
     const step = (timestamp: number) => {
-      const el = containerRef.current;
-      if (el && !pausedRef.current) {
+      if (!pausedRef.current && trackRef.current) {
         const delta = prevTimeRef.current ? timestamp - prevTimeRef.current : 0;
-        // 40 px/s; cap delta so a tab-switch doesn't cause a jump
-        el.scrollLeft += 0.04 * Math.min(delta, 50);
-        const loopPoint = el.scrollWidth / NUM_REPS;
-        if (el.scrollLeft >= loopPoint) {
-          el.scrollLeft -= loopPoint;
-        }
+        offsetRef.current -= SPEED * Math.min(delta, 50);
+        if (Math.abs(offsetRef.current) >= loopWidth) offsetRef.current = 0;
+        trackRef.current.style.transform = `translateX(${offsetRef.current}px)`;
       }
       prevTimeRef.current = timestamp;
       rafRef.current = requestAnimationFrame(step);
     };
-
     rafRef.current = requestAnimationFrame(step);
     return () => {
       cancelAnimationFrame(rafRef.current);
-      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+      if (resumeTimer.current) clearTimeout(resumeTimer.current);
     };
-  }, []);
+  }, [loopWidth]);
 
   const scrollManual = (dir: "left" | "right") => {
     pausedRef.current = true;
     scheduleResume();
-    containerRef.current?.scrollBy({
-      left: dir === "left" ? -330 : 330,
-      behavior: "smooth",
-    });
+    offsetRef.current += dir === "left" ? CARD_WIDTH : -CARD_WIDTH;
+    // Clamp within the loop range
+    if (offsetRef.current > 0) offsetRef.current = -(loopWidth - CARD_WIDTH);
+    if (Math.abs(offsetRef.current) >= loopWidth) offsetRef.current = 0;
+    if (trackRef.current) {
+      trackRef.current.style.transition = "transform 0.4s cubic-bezier(0.4,0,0.2,1)";
+      trackRef.current.style.transform = `translateX(${offsetRef.current}px)`;
+      setTimeout(() => {
+        if (trackRef.current) trackRef.current.style.transition = "";
+      }, 420);
+    }
   };
 
-  const items = Array.from({ length: NUM_REPS }, () => testimonials).flat();
+  const items = [...testimonials, ...testimonials];
 
   return (
     <section className="py-14 bg-[#f8f9fc] overflow-hidden">
@@ -183,18 +175,19 @@ export function Testimonials() {
         </div>
       </Container>
 
-      <div className="relative">
-        {/* Edge fades */}
+      <div className="relative overflow-hidden">
         <div className="pointer-events-none absolute left-0 inset-y-0 w-6 sm:w-10 bg-gradient-to-r from-[#f8f9fc] to-transparent z-10" />
         <div className="pointer-events-none absolute right-0 inset-y-0 w-6 sm:w-10 bg-gradient-to-l from-[#f8f9fc] to-transparent z-10" />
 
         <div
-          ref={containerRef}
-          className="flex overflow-x-scroll pb-6 px-8 scrollbar-hide"
-          onScroll={handleScroll}
+          ref={trackRef}
+          className="flex pb-6 px-8 will-change-transform"
+          style={{ width: "max-content" }}
+          onMouseEnter={pause}
+          onTouchStart={pause}
         >
           {items.map((item, i) => (
-            <TestimonialCard key={i} {...item} onClick={handleCardClick} />
+            <TestimonialCard key={i} {...item} onClick={pause} />
           ))}
         </div>
       </div>

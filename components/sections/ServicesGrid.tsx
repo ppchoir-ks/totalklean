@@ -153,8 +153,60 @@ export function ServicesGrid() {
         </div>
       </Container>
 
-      {/* Carousel - no CSS gap; margins are managed per-card so collapsed cards leave no dead space */}
-      <div className="overflow-hidden px-4 sm:px-8 lg:px-16">
+      {/* Mobile: snap-scroll, one card + peek of next */}
+      <div className="block lg:hidden overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 pb-4">
+        <div className="flex gap-3" style={{ width: "max-content" }}>
+          {services.map((svc) => {
+            const label = locale === "fr" ? svc.frLabel : svc.enLabel;
+            const desc  = locale === "fr" ? svc.frDesc  : svc.enDesc;
+            return (
+              <div
+                key={svc.id}
+                className="snap-center flex-shrink-0 relative rounded-2xl overflow-hidden"
+                style={{ width: "82vw", height: "380px" }}
+              >
+                <img
+                  src={svc.image}
+                  alt={label}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.08) 45%, rgba(0,0,0,0.68) 100%)" }}
+                />
+                <div className="absolute inset-0 p-6 flex flex-col">
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="font-heading font-bold text-white text-xl leading-tight max-w-[75%]">{label}</h3>
+                    <a
+                      href={`/${locale}/services${svc.anchor}`}
+                      className="shrink-0 mt-0.5 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md"
+                    >
+                      <ArrowRight size={16} className="text-obsidian" />
+                    </a>
+                  </div>
+                  <p className="font-body text-sm text-white/70 leading-relaxed mt-3 line-clamp-3">{desc}</p>
+                  {svc.featured && (
+                    <div className="mt-auto">
+                      <a
+                        href={`https://wa.me/243997806193?text=${encodeURIComponent(locale === "fr" ? "Bonjour Total Klean, je souhaite réserver le service Mobile." : "Hello Total Klean, I'd like to book the Mobile service.")}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-amber text-white font-body text-sm font-semibold rounded-full shadow-md"
+                      >
+                        <MessageCircle size={14} />
+                        {locale === "fr" ? "Réserver via WhatsApp" : "Book via WhatsApp"}
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Desktop: accordion carousel */}
+      <div className="hidden lg:block overflow-hidden px-4 sm:px-8 lg:px-16">
         <div className="flex" style={{ height: "420px" }}>
           {services.map((svc, i) => {
             const diff = i - active;

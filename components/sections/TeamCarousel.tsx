@@ -8,7 +8,7 @@ export interface TeamMember {
   name: string;
   role: { fr: string; en: string };
   experience?: { fr: string; en: string };
-  image?: string; // set to undefined until real photos are provided
+  image?: string;
   initials: string;
   colorFrom: string;
   colorTo: string;
@@ -17,13 +17,13 @@ export interface TeamMember {
 interface Props {
   members: TeamMember[];
   lang: "fr" | "en";
-  /** Solid color for the scroll-edge fade. Must match the section background. */
   bg?: string;
 }
 
-const NUM_REPS = 4;
 const RESUME_DELAY = 7000;
-const SPEED = 0.04; // px / ms  ≈ 40 px/s
+const SPEED = 0.04; // px/ms
+
+const CARD_WIDTH = 220; // 200px card + 20px margin (mr-5)
 
 function MemberCard({
   member,
@@ -41,7 +41,6 @@ function MemberCard({
                  shadow-[0_4px_20px_rgba(0,0,0,0.07)] hover:shadow-[0_16px_44px_rgba(0,0,0,0.13)]
                  hover:-translate-y-1.5 transition-all duration-300 mr-5 cursor-pointer select-none"
     >
-      {/* Photo or gradient placeholder */}
       <div className="relative h-52 overflow-hidden">
         {member.image ? (
           <Image
@@ -65,7 +64,6 @@ function MemberCard({
         )}
       </div>
 
-      {/* Info */}
       <div className="px-4 pt-4 pb-5">
         <p className="font-heading font-bold text-obsidian text-base leading-tight">{member.name}</p>
         <p className="font-body text-xs text-obsidian/55 mt-0.5 leading-snug">{member.role[lang]}</p>
@@ -78,37 +76,32 @@ function MemberCard({
 }
 
 export function TeamCarousel({ members, lang, bg = "white" }: Props) {
-  const containerRef   = useRef<HTMLDivElement>(null);
-  const rafRef         = useRef<number>(0);
-  const prevTimeRef    = useRef<number>(0);
-  const pausedRef      = useRef(false);
-  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const trackRef    = useRef<HTMLDivElement>(null);
+  const rafRef      = useRef<number>(0);
+  const prevTimeRef = useRef<number>(0);
+  const offsetRef   = useRef(0);
+  const pausedRef   = useRef(false);
+  const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const scheduleResume = useCallback(() => {
-    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
-    resumeTimerRef.current = setTimeout(() => {
-      pausedRef.current = false;
-    }, RESUME_DELAY);
+    if (resumeTimer.current) clearTimeout(resumeTimer.current);
+    resumeTimer.current = setTimeout(() => { pausedRef.current = false; }, RESUME_DELAY);
   }, []);
 
-  const handleCardClick = useCallback(() => {
+  const pause = useCallback(() => {
     pausedRef.current = true;
     scheduleResume();
   }, [scheduleResume]);
 
-  // Reset timer on manual scroll while paused (RAF scroll won't reach here when running)
-  const handleScroll = useCallback(() => {
-    if (pausedRef.current) scheduleResume();
-  }, [scheduleResume]);
+  const loopWidth = members.length * CARD_WIDTH;
 
   useEffect(() => {
     const step = (timestamp: number) => {
-      const el = containerRef.current;
-      if (el && !pausedRef.current) {
+      if (!pausedRef.current && trackRef.current) {
         const delta = prevTimeRef.current ? timestamp - prevTimeRef.current : 0;
-        el.scrollLeft += SPEED * Math.min(delta, 50);
-        const loopPoint = el.scrollWidth / NUM_REPS;
-        if (el.scrollLeft >= loopPoint) el.scrollLeft -= loopPoint;
+        offsetRef.current -= SPEED * Math.min(delta, 50);
+        if (Math.abs(offsetRef.current) >= loopWidth) offsetRef.current = 0;
+        trackRef.current.style.transform = `translateX(${offsetRef.current}px)`;
       }
       prevTimeRef.current = timestamp;
       rafRef.current = requestAnimationFrame(step);
@@ -116,16 +109,15 @@ export function TeamCarousel({ members, lang, bg = "white" }: Props) {
     rafRef.current = requestAnimationFrame(step);
     return () => {
       cancelAnimationFrame(rafRef.current);
-      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+      if (resumeTimer.current) clearTimeout(resumeTimer.current);
     };
-  }, []);
+  }, [loopWidth]);
 
-  const items = Array.from({ length: NUM_REPS }, () => members).flat();
-
-  const fade = `bg-${bg}`;
+  // Duplicate items for seamless loop (original + copy side by side)
+  const items = [...members, ...members];
 
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
       <div
         className="pointer-events-none absolute left-0 inset-y-0 w-6 sm:w-16 z-10"
         style={{ backgroundImage: `linear-gradient(to right, ${bg}, transparent)` }}
@@ -136,12 +128,14 @@ export function TeamCarousel({ members, lang, bg = "white" }: Props) {
       />
 
       <div
-        ref={containerRef}
-        className="flex overflow-x-scroll pb-4 px-6 scrollbar-hide"
-        onScroll={handleScroll}
+        ref={trackRef}
+        className="flex pb-4 px-6 will-change-transform"
+        style={{ width: "max-content" }}
+        onMouseEnter={pause}
+        onTouchStart={pause}
       >
         {items.map((member, i) => (
-          <MemberCard key={i} member={member} lang={lang} onClick={handleCardClick} />
+          <MemberCard key={i} member={member} lang={lang} onClick={pause} />
         ))}
       </div>
     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { LogoMarquee } from "@/components/ui/LogoMarquee";
@@ -49,7 +49,23 @@ function CountUp({ target, suffix, active }: { target: number; suffix: string; a
 export function StatsBar() {
   const t = useTranslations("stats");
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-10px" });
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0, rootMargin: "0px" }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <section ref={ref} className="pt-10 pb-8 bg-white border-y border-black/5">
