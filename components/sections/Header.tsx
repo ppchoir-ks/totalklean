@@ -110,6 +110,7 @@ export function Header() {
         {/* Logo - glass bubble appears only once scrolling starts */}
         <Link
           href={localizedHref("/")}
+          onClick={(e) => handleNavClick(e, "/")}
           className={cn(
             "flex-shrink-0 flex items-center gap-2 transition-all duration-300",
             scrolled
