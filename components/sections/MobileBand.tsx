@@ -21,7 +21,7 @@ export function MobileBand() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
           >
-            <span className="font-body text-xs font-semibold uppercase tracking-widest text-aqua">
+            <span className="font-body text-xs font-semibold uppercase tracking-widest text-aqua" translate="no">
               Total Klean Mobile
             </span>
             <h2 className="font-heading font-bold text-white text-3xl md:text-4xl lg:text-5xl mt-4 mb-6 leading-tight">

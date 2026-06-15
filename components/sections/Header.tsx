@@ -132,6 +132,7 @@ export function Header() {
           />
           {/* Wordmark rendered with brand fonts */}
           <span
+            translate="no"
             className={cn(
               "font-heading font-bold leading-none transition-all duration-300 select-none",
               scrolled ? "text-sm" : "text-xl sm:text-2xl"

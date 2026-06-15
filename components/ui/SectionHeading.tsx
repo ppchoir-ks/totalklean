@@ -36,6 +36,7 @@ export function SectionHeading({
     >
       {eyebrow && (
         <span
+          translate="no"
           className={cn(
             "font-body text-xs font-semibold uppercase tracking-widest",
             light ? "text-aqua" : "text-aqua"

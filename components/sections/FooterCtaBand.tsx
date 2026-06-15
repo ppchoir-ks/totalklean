@@ -18,7 +18,7 @@ export function FooterCtaBand() {
   return (
     <div className="bg-baltic py-16">
       <Container className="text-center">
-        <p className="font-body text-xs font-semibold uppercase tracking-widest text-aqua mb-3">
+        <p className="font-body text-xs font-semibold uppercase tracking-widest text-aqua mb-3" translate="no">
           Total Klean
         </p>
         <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-6 max-w-2xl mx-auto">

@@ -181,7 +181,7 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-body text-xs text-white/40">
-            © {year} Total Klean. {t("footer.rights")}
+            © {year} <span translate="no">Total Klean</span>. {t("footer.rights")}
           </p>
           <Link
             href={href("/politique-de-confidentialite")}
