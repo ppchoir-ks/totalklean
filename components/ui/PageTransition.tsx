@@ -7,10 +7,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   return (
-    // initial={false} skips the animation on first SSR render;
-    // each pathname change unmounts/remounts the keyed motion.div,
-    // triggering the entrance animation on every navigation.
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence mode="wait">
       <motion.div
         key={pathname}
         initial={{ opacity: 0 }}
