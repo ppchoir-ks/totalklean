@@ -60,18 +60,7 @@ export default async function LocaleLayout({
         >
           {locale === "fr" ? "Aller au contenu" : "Skip to content"}
         </a>
-        {/* Fixed dot-grid texture — multiply blend shows on any section color without covering content */}
-        <div
-          aria-hidden="true"
-          className="fixed inset-0 pointer-events-none select-none"
-          style={{
-            zIndex: 9999,
-            backgroundImage: "radial-gradient(rgba(40,88,137,0.07) 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
-            mixBlendMode: "multiply",
-          }}
-        />
-        <NextIntlClientProvider messages={messages}>
+<NextIntlClientProvider messages={messages}>
           <LenisProvider>
             <Header />
             <main id="main-content">
