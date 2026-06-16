@@ -7,6 +7,7 @@ import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
 import { LenisProvider } from "@/components/ui/LenisProvider";
 import { PageTransition } from "@/components/ui/PageTransition";
+import { DynamicThemeColor } from "@/components/ui/DynamicThemeColor";
 import "../globals.css";
 
 const kanit = Kanit({
@@ -68,6 +69,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${kanit.variable} ${inter.variable}`}>
       <body className="min-h-dvh bg-white text-obsidian antialiased">
+        <DynamicThemeColor />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-amber focus:text-white focus:font-body focus:font-semibold focus:rounded-btn focus:shadow-lg"
