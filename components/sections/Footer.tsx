@@ -68,7 +68,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-obsidian text-white">
+    <footer className="bg-obsidian text-white" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
       <FooterCtaBand />
 
       {/* Main footer */}
@@ -100,49 +100,52 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Services */}
-          <div>
-            <h3 className="font-heading font-semibold text-sm uppercase tracking-wider text-white/40 mb-5">
-              {t("nav.services")}
-            </h3>
-            <ul className="space-y-2.5">
-              {services.map(({ key, href: serviceHref }) => (
-                <li key={key}>
-                  <Link
-                    href={href(serviceHref)}
-                    className="font-body text-sm text-white/70 hover:text-white transition-colors"
-                  >
-                    {t(key as Parameters<typeof t>[0])}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Services + Navigation — side by side on mobile, individual cells on md+ */}
+          <div className="grid grid-cols-2 gap-6 md:contents">
+            {/* Services */}
+            <div>
+              <h3 className="font-heading font-semibold text-sm uppercase tracking-wider text-white/40 mb-5">
+                {t("nav.services")}
+              </h3>
+              <ul className="space-y-2.5">
+                {services.map(({ key, href: serviceHref }) => (
+                  <li key={key}>
+                    <Link
+                      href={href(serviceHref)}
+                      className="font-body text-sm text-white/70 hover:text-white transition-colors"
+                    >
+                      {t(key as Parameters<typeof t>[0])}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Navigation */}
-          <div>
-            <h3 className="font-heading font-semibold text-sm uppercase tracking-wider text-white/40 mb-5">
-              {locale === "fr" ? "Navigation" : "Navigation"}
-            </h3>
-            <ul className="space-y-2.5">
-              {[
-                { key: "nav.home", href: "/" },
-                { key: "nav.about", href: "/a-propos" },
-                { key: "nav.quote", href: "/cotation" },
-                { key: "nav.faq", href: "/faq" },
-                { key: "nav.blog", href: "/blog" },
-                { key: "nav.contact", href: "/contact" },
-              ].map(({ key, href: navHref }) => (
-                <li key={key}>
-                  <Link
-                    href={href(navHref)}
-                    className="font-body text-sm text-white/70 hover:text-white transition-colors"
-                  >
-                    {t(key as Parameters<typeof t>[0])}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {/* Navigation */}
+            <div>
+              <h3 className="font-heading font-semibold text-sm uppercase tracking-wider text-white/40 mb-5">
+                {locale === "fr" ? "Navigation" : "Navigation"}
+              </h3>
+              <ul className="space-y-2.5">
+                {[
+                  { key: "nav.home", href: "/" },
+                  { key: "nav.about", href: "/a-propos" },
+                  { key: "nav.quote", href: "/cotation" },
+                  { key: "nav.faq", href: "/faq" },
+                  { key: "nav.blog", href: "/blog" },
+                  { key: "nav.contact", href: "/contact" },
+                ].map(({ key, href: navHref }) => (
+                  <li key={key}>
+                    <Link
+                      href={href(navHref)}
+                      className="font-body text-sm text-white/70 hover:text-white transition-colors"
+                    >
+                      {t(key as Parameters<typeof t>[0])}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Contact */}

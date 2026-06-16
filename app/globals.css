@@ -78,6 +78,19 @@ img {
   to   { transform: translateX(-50%); }
 }
 
+/* Safe area support (viewport-fit=cover) */
+header {
+  padding-top: calc(1rem + env(safe-area-inset-top));
+}
+@media (min-width: 640px) {
+  header {
+    padding-top: calc(1.25rem + env(safe-area-inset-top));
+  }
+}
+#mobile-nav {
+  top: calc(5rem + env(safe-area-inset-top));
+}
+
 /* Hide scrollbars utility */
 .scrollbar-hide {
   scrollbar-width: none;
