@@ -36,6 +36,15 @@ export const metadata: Metadata = {
     siteName: "Total Klean",
     type: "website",
   },
+  // Standalone PWA: full-screen, content behind the status bar (app-like)
+  appleWebApp: {
+    capable: true,
+    title: "Total Klean",
+    statusBarStyle: "black-translucent",
+  },
+  icons: {
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export function generateStaticParams() {
