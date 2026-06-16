@@ -132,7 +132,7 @@ export function Testimonials() {
     }
   };
 
-  const items = [...testimonials, ...testimonials];
+  const items = Array.from({ length: 6 }, () => testimonials).flat();
 
   return (
     <section className="py-14 bg-[#f8f9fc] overflow-hidden">
