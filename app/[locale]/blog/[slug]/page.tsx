@@ -57,7 +57,7 @@ export default async function BlogPostPage({
   return (
     <>
       {/* Article hero */}
-      <div className="relative h-72 md:h-[480px] bg-obsidian">
+      <div className="relative h-[460px] md:h-[520px] bg-obsidian">
         <Image
           src={post.image}
           alt={post[lang].title}
@@ -66,17 +66,17 @@ export default async function BlogPostPage({
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/30 to-obsidian/10" />
-        <div className="absolute bottom-0 left-0 right-0 pb-12 pt-32">
+        <div className="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/50 to-obsidian/20" />
+        <div className="absolute bottom-0 left-0 right-0 pb-10 md:pb-14">
           <Container>
             <FadeIn y={20}>
+              <span className="inline-block bg-aqua/20 text-aqua font-body text-xs font-semibold px-3 py-1 rounded-full mb-5">
+                {post.tag}
+              </span>
               <h1 className="font-heading font-bold text-white text-3xl md:text-4xl lg:text-5xl leading-tight max-w-3xl">
                 {post[lang].title}
               </h1>
               <p className="font-body text-white/40 text-sm mt-3">{formatDate(post.date)}</p>
-              <span className="inline-block bg-aqua/20 text-aqua font-body text-xs font-semibold px-3 py-1 rounded-full mt-4">
-                {post.tag}
-              </span>
             </FadeIn>
           </Container>
         </div>
