@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { LogoMarquee } from "@/components/ui/LogoMarquee";
@@ -15,10 +14,10 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: 5, suffix: "+", labelKey: "years" },
+  { value: 5,   suffix: "+", labelKey: "years" },
   { value: 500, suffix: "+", labelKey: "vehicles" },
-  { value: 6, suffix: "", labelKey: "services" },
-  { value: 98, suffix: "%", labelKey: "satisfaction" },
+  { value: 6,   suffix: "",  labelKey: "services" },
+  { value: 98,  suffix: "%", labelKey: "satisfaction" },
 ];
 
 function CountUp({ target, suffix, active }: { target: number; suffix: string; active: boolean }) {
@@ -40,8 +39,7 @@ function CountUp({ target, suffix, active }: { target: number; suffix: string; a
 
   return (
     <span className="font-heading font-bold text-4xl md:text-5xl text-baltic">
-      {count}
-      {suffix}
+      {count}{suffix}
     </span>
   );
 }
@@ -52,36 +50,38 @@ export function StatsBar() {
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0, rootMargin: "0px" }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
+    if (inView) return;
+    const check = () => {
+      if (!ref.current) return;
+      const rect = ref.current.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 40) setInView(true);
+    };
+    // Small delay so FM initial states are applied before we check
+    const timer = setTimeout(check, 150);
+    window.addEventListener("scroll", check, { passive: true });
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", check);
+    };
+  }, [inView]);
 
   return (
     <section ref={ref} className="pt-10 pb-8 bg-white border-y border-black/5">
       <Container>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, i) => (
-            <motion.div
+            <div
               key={stat.labelKey}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
               className="flex flex-col items-center text-center gap-2"
+              style={{
+                opacity: inView ? 1 : 0,
+                transform: inView ? "translateY(0)" : "translateY(20px)",
+                transition: `opacity 0.5s ease ${i * 0.1}s, transform 0.5s ease ${i * 0.1}s`,
+              }}
             >
               <CountUp target={stat.value} suffix={stat.suffix} active={inView} />
               <p className="font-body text-sm text-obsidian/50">{t(stat.labelKey)}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
         <LogoMarquee />

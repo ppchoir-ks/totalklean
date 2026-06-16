@@ -85,9 +85,8 @@ function TestimonialCard({ name, initials, colorFrom, colorTo, text, service, on
   );
 }
 
-const SPEED = 0.04;       // px/ms
-const CARD_WIDTH = 324;   // 300px card + 24px (mr-6)
-const RESUME_DELAY = 7000;
+const SPEED = 0.04;     // px/ms
+const CARD_WIDTH = 324; // 300px card + 24px (mr-6)
 
 export function Testimonials() {
   const t = useTranslations("testimonials");
@@ -96,17 +95,9 @@ export function Testimonials() {
   const prevTimeRef = useRef<number>(0);
   const offsetRef   = useRef(0);
   const pausedRef   = useRef(false);
-  const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const scheduleResume = useCallback(() => {
-    if (resumeTimer.current) clearTimeout(resumeTimer.current);
-    resumeTimer.current = setTimeout(() => { pausedRef.current = false; }, RESUME_DELAY);
-  }, []);
-
-  const pause = useCallback(() => {
-    pausedRef.current = true;
-    scheduleResume();
-  }, [scheduleResume]);
+  const pause  = useCallback(() => { pausedRef.current = true;  }, []);
+  const resume = useCallback(() => { pausedRef.current = false; }, []);
 
   const loopWidth = testimonials.length * CARD_WIDTH;
 
@@ -122,15 +113,12 @@ export function Testimonials() {
       rafRef.current = requestAnimationFrame(step);
     };
     rafRef.current = requestAnimationFrame(step);
-    return () => {
-      cancelAnimationFrame(rafRef.current);
-      if (resumeTimer.current) clearTimeout(resumeTimer.current);
-    };
+    return () => { cancelAnimationFrame(rafRef.current); };
   }, [loopWidth]);
 
   const scrollManual = (dir: "left" | "right") => {
     pausedRef.current = true;
-    scheduleResume();
+    setTimeout(() => { pausedRef.current = false; }, 800);
     offsetRef.current += dir === "left" ? CARD_WIDTH : -CARD_WIDTH;
     // Clamp within the loop range
     if (offsetRef.current > 0) offsetRef.current = -(loopWidth - CARD_WIDTH);
@@ -176,18 +164,19 @@ export function Testimonials() {
       </Container>
 
       <div className="relative overflow-hidden">
-        <div className="pointer-events-none absolute left-0 inset-y-0 w-6 sm:w-10 bg-gradient-to-r from-[#f8f9fc] to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 inset-y-0 w-6 sm:w-10 bg-gradient-to-l from-[#f8f9fc] to-transparent z-10" />
-
         <div
           ref={trackRef}
           className="flex pb-6 px-8 will-change-transform"
           style={{ width: "max-content" }}
-          onMouseEnter={pause}
+          onMouseDown={pause}
+          onMouseUp={resume}
+          onMouseLeave={resume}
           onTouchStart={pause}
+          onTouchEnd={resume}
+          onTouchCancel={resume}
         >
           {items.map((item, i) => (
-            <TestimonialCard key={i} {...item} onClick={pause} />
+            <TestimonialCard key={i} {...item} onClick={() => {}} />
           ))}
         </div>
       </div>

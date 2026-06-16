@@ -20,7 +20,6 @@ interface Props {
   bg?: string;
 }
 
-const RESUME_DELAY = 7000;
 const SPEED = 0.04; // px/ms
 
 const CARD_WIDTH = 220; // 200px card + 20px margin (mr-5)
@@ -81,17 +80,9 @@ export function TeamCarousel({ members, lang, bg = "white" }: Props) {
   const prevTimeRef = useRef<number>(0);
   const offsetRef   = useRef(0);
   const pausedRef   = useRef(false);
-  const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const scheduleResume = useCallback(() => {
-    if (resumeTimer.current) clearTimeout(resumeTimer.current);
-    resumeTimer.current = setTimeout(() => { pausedRef.current = false; }, RESUME_DELAY);
-  }, []);
-
-  const pause = useCallback(() => {
-    pausedRef.current = true;
-    scheduleResume();
-  }, [scheduleResume]);
+  const pause   = useCallback(() => { pausedRef.current = true;  }, []);
+  const resume  = useCallback(() => { pausedRef.current = false; }, []);
 
   const loopWidth = members.length * CARD_WIDTH;
 
@@ -107,35 +98,26 @@ export function TeamCarousel({ members, lang, bg = "white" }: Props) {
       rafRef.current = requestAnimationFrame(step);
     };
     rafRef.current = requestAnimationFrame(step);
-    return () => {
-      cancelAnimationFrame(rafRef.current);
-      if (resumeTimer.current) clearTimeout(resumeTimer.current);
-    };
+    return () => { cancelAnimationFrame(rafRef.current); };
   }, [loopWidth]);
 
-  // Duplicate items for seamless loop (original + copy side by side)
   const items = [...members, ...members];
 
   return (
     <div className="relative overflow-hidden">
       <div
-        className="pointer-events-none absolute left-0 inset-y-0 w-6 sm:w-16 z-10"
-        style={{ backgroundImage: `linear-gradient(to right, ${bg}, transparent)` }}
-      />
-      <div
-        className="pointer-events-none absolute right-0 inset-y-0 w-6 sm:w-16 z-10"
-        style={{ backgroundImage: `linear-gradient(to left, ${bg}, transparent)` }}
-      />
-
-      <div
         ref={trackRef}
         className="flex pb-4 px-6 will-change-transform"
         style={{ width: "max-content" }}
-        onMouseEnter={pause}
+        onMouseDown={pause}
+        onMouseUp={resume}
+        onMouseLeave={resume}
         onTouchStart={pause}
+        onTouchEnd={resume}
+        onTouchCancel={resume}
       >
         {items.map((member, i) => (
-          <MemberCard key={i} member={member} lang={lang} onClick={pause} />
+          <MemberCard key={i} member={member} lang={lang} onClick={() => {}} />
         ))}
       </div>
     </div>
