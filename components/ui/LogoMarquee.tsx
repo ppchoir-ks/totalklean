@@ -1,5 +1,7 @@
 "use client";
 
+import { useLocale } from "next-intl";
+
 const clients = [
   { src: "/assets/brand/imagery/save-the-children.svg", alt: "Save the Children" },
   { src: "/assets/brand/imagery/UNICEF-Logo-1986.png", alt: "UNICEF" },
@@ -11,12 +13,13 @@ const clients = [
 ];
 
 export function LogoMarquee() {
+  const locale = useLocale();
   const doubled = [...clients, ...clients];
 
   return (
     <div className="mt-8 pt-6 border-t border-black/5">
       <p className="text-center font-body text-[11px] font-semibold uppercase tracking-[0.18em] text-baltic/60 mb-4">
-        Ils nous font confiance
+        {locale === "fr" ? "Ils nous font confiance" : "They trust us"}
       </p>
 
       <div className="relative overflow-hidden py-3">

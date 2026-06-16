@@ -1,6 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+// Escape user input before interpolating into the HTML email body
+function esc(value: unknown): string {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -38,14 +48,14 @@ export async function POST(req: NextRequest) {
             </div>
             <div style="background:#f8f9fc;padding:24px 32px;border-radius:0 0 12px 12px;border:1px solid #e5e7eb">
               <table style="width:100%;border-collapse:collapse;font-size:14px">
-                <tr><td style="padding:8px 0;color:#888;width:140px">Nom</td><td style="padding:8px 0;color:#17181A;font-weight:600">${name}</td></tr>
-                <tr><td style="padding:8px 0;color:#888">Email</td><td style="padding:8px 0;color:#17181A">${email}</td></tr>
-                <tr><td style="padding:8px 0;color:#888">Téléphone</td><td style="padding:8px 0;color:#17181A">${phone || "N/A"}</td></tr>
-                <tr><td style="padding:8px 0;color:#888">Service</td><td style="padding:8px 0;color:#17181A">${service || "N/A"}</td></tr>
-                <tr><td style="padding:8px 0;color:#888">Véhicule</td><td style="padding:8px 0;color:#17181A">${vehicle || "N/A"}</td></tr>
+                <tr><td style="padding:8px 0;color:#888;width:140px">Nom</td><td style="padding:8px 0;color:#17181A;font-weight:600">${esc(name)}</td></tr>
+                <tr><td style="padding:8px 0;color:#888">Email</td><td style="padding:8px 0;color:#17181A">${esc(email)}</td></tr>
+                <tr><td style="padding:8px 0;color:#888">Téléphone</td><td style="padding:8px 0;color:#17181A">${esc(phone) || "N/A"}</td></tr>
+                <tr><td style="padding:8px 0;color:#888">Service</td><td style="padding:8px 0;color:#17181A">${esc(service) || "N/A"}</td></tr>
+                <tr><td style="padding:8px 0;color:#888">Véhicule</td><td style="padding:8px 0;color:#17181A">${esc(vehicle) || "N/A"}</td></tr>
               </table>
               <hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0"/>
-              <p style="font-size:14px;color:#555;white-space:pre-wrap;margin:0">${message}</p>
+              <p style="font-size:14px;color:#555;white-space:pre-wrap;margin:0">${esc(message)}</p>
             </div>
           </div>
         `,

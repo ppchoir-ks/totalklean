@@ -37,10 +37,23 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  // Reset scroll to the very top before the browser paints on every route change.
-  // useLayoutEffect fires synchronously after DOM mutations but before paint,
-  // so whileInView animation checks always start from position 0.
+  // On every route change, jump to the right starting position before paint.
+  // If the URL carries a hash (e.g. /services#ceramique), scroll to that
+  // section instead of the top — otherwise reset to 0 so whileInView
+  // animations always start fresh.
   useIsomorphicLayoutEffect(() => {
+    const hash = window.location.hash;
+    const target = hash ? document.getElementById(hash.slice(1)) : null;
+
+    if (target) {
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(target, { offset: -80, immediate: true });
+      } else {
+        target.scrollIntoView();
+      }
+      return;
+    }
+
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate: true });
     } else {
