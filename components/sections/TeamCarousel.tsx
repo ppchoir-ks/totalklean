@@ -105,26 +105,7 @@ export function TeamCarousel({ members, lang, bg = "white" }: Props) {
 
   return (
     <div className="relative overflow-hidden">
-      {/* Liquid glass edge blur */}
-      <div
-        className="absolute left-0 top-0 bottom-0 w-14 sm:w-20 z-10 pointer-events-none"
-        style={{
-          backdropFilter: "blur(3px)",
-          WebkitBackdropFilter: "blur(3px)",
-          maskImage: "linear-gradient(to right, rgba(0,0,0,0.4) 0%, transparent)",
-          WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,0.4) 0%, transparent)",
-        }}
-      />
-      <div
-        className="absolute right-0 top-0 bottom-0 w-14 sm:w-20 z-10 pointer-events-none"
-        style={{
-          backdropFilter: "blur(7px)",
-          WebkitBackdropFilter: "blur(7px)",
-          maskImage: "linear-gradient(to left, black 20%, transparent)",
-          WebkitMaskImage: "linear-gradient(to left, black 20%, transparent)",
-        }}
-      />
-      <div
+<div
         ref={trackRef}
         className="flex pb-4 px-6 will-change-transform"
         style={{ width: "max-content" }}
