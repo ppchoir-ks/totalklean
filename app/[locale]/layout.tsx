@@ -45,6 +45,10 @@ export const metadata: Metadata = {
   icons: {
     apple: "/apple-touch-icon.png",
   },
+  other: {
+    // Older iOS needs the apple-prefixed tag to launch standalone
+    "apple-mobile-web-app-capable": "yes",
+  },
 };
 
 export function generateStaticParams() {
