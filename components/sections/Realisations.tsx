@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -66,7 +66,7 @@ export function Realisations() {
                   key={step.num}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false, margin: "-60px" }}
+                  viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.45, delay: i * 0.08 }}
                   className="flex gap-5 items-start group"
                 >
@@ -90,7 +90,7 @@ export function Realisations() {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
               className="mt-10"
             >
@@ -109,7 +109,7 @@ export function Realisations() {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.5 }}
               className="absolute -top-5 -right-5 z-10 bg-amber text-white rounded-2xl px-5 py-3 shadow-lg"
             >
@@ -124,7 +124,7 @@ export function Realisations() {
                 key={step.num}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, margin: "-60px" }}
+                viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
                 className={`relative rounded-card overflow-hidden ${i === 0 || i === 3 ? "h-56" : "h-44"}`}
               >

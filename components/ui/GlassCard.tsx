@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -16,7 +16,7 @@ export function GlassCard({ children, className, delay = 0, hover = true, dark =
     <motion.div
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, margin: "-60px" }}
+      viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
       className={cn(
         "rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
