@@ -22,6 +22,12 @@
   --foreground: #17181A;
 }
 
+/* Dark background on html prevents white flash on overscroll rubber-band (iOS)
+   and behind the status bar / home indicator safe areas */
+html {
+  background-color: #17181A;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
