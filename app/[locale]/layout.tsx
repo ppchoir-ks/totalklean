@@ -8,6 +8,7 @@ import { Footer } from "@/components/sections/Footer";
 import { LenisProvider } from "@/components/ui/LenisProvider";
 import { PageTransition } from "@/components/ui/PageTransition";
 import { DynamicThemeColor } from "@/components/ui/DynamicThemeColor";
+import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
 
 const kanit = Kanit({
@@ -85,6 +86,7 @@ export default async function LocaleLayout({
             <Footer />
           </LenisProvider>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );
