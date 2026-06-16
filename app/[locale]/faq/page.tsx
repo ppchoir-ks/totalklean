@@ -71,7 +71,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={{ once: false, margin: "-40px" }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: index * 0.07 }}
       className={cn(
         "rounded-2xl border transition-all duration-300 overflow-hidden",
@@ -135,7 +135,7 @@ export default function FAQPage() {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="bg-white/85 backdrop-blur-md border border-white/70 shadow-[0_8px_32px_rgba(40,88,137,0.1)] rounded-2xl p-8 text-center"
           >

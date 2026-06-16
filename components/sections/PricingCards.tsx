@@ -400,7 +400,7 @@ export function PricingCards({ lang }: { lang: "fr" | "en" }) {
             key={plan.id}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
+            viewport={{ once: false, margin: "-40px" }}
             transition={{ duration: 0.65, delay: i * 0.13, ease: [0.22, 1, 0.36, 1] }}
             className={cn("flex flex-col", plan.featured ? "lg:-mt-5" : "lg:mt-5")}
           >
@@ -413,7 +413,7 @@ export function PricingCards({ lang }: { lang: "fr" | "en" }) {
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
         transition={{ duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
         className="flex justify-center mt-10"
       >
